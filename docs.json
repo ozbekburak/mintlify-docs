@@ -1,68 +1,68 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Binalyze Fleet AI",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#DC2626",
+    "light": "#EF4444", 
+    "dark": "#991B1B"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Product Guide",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Getting Started",
             "pages": [
               "index",
-              "quickstart",
-              "development"
+              "overview",
+              "getting-started"
             ]
           },
           {
-            "group": "Customization",
+            "group": "AI Agents",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "agents/fleet-agent",
+              "agents/yara-agent",
+              "agents/sigma-agent",
+              "agents/osquery-agent",
+              "agents/agent-routing",
+              "agents/conversation-features"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Teams",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+              "teams/detection-team",
+              "teams/blacklight-team",
+              "teams/team-routing"
             ]
           },
           {
-            "group": "AI tools",
+            "group": "Features",
             "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API reference",
-        "groups": [
-          {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
+              "features/byoai",
+              "features/detection-rules",
+              "features/expert-system",
+              "features/conversation-management"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Setup & Configuration",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "setup/ai-providers",
+              "setup/authentication",
+              "setup/enterprise-features"
+            ]
+          },
+          {
+            "group": "Use Cases",
+            "pages": [
+              "use-cases/incident-response",
+              "use-cases/malware-analysis",
+              "use-cases/security-operations"
             ]
           }
         ]
@@ -71,19 +71,19 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Support",
+          "href": "mailto:support@binalyze.com",
+          "icon": "envelope"
         },
         {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
+          "anchor": "Website",
+          "href": "https://binalyze.com",
+          "icon": "globe"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Contact",
+          "href": "https://binalyze.com/contact",
+          "icon": "phone"
         }
       ]
     }
@@ -96,20 +96,20 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:support@binalyze.com"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Fleet AI Platform",
+      "href": "https://ai.binalyze.com"
     }
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "linkedin": "https://linkedin.com/company/binalyze",
+      "twitter": "https://twitter.com/binalyze",
+      "github": "https://github.com/binalyze"
     }
   }
 }
