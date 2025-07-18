@@ -1,0 +1,306 @@
+---
+title: "Sigma Agent"
+description: "Specialized AI agent for Sigma rule generation and log-based threat detection"
+---
+
+# Sigma Agent
+
+The Sigma Agent is a specialized AI agent focused on generating high-quality Sigma rules for log-based threat detection and analysis. With expertise in log analysis, SIEM platforms, and threat hunting methodologies, the Sigma Agent helps security teams create effective detection rules for identifying threats across diverse security platforms.
+
+## Overview
+
+Sigma is a generic and open standard for describing log events in a structured manner. The Sigma Agent leverages comprehensive knowledge of attack techniques, log sources, and detection patterns to generate professional-grade Sigma rules that can be deployed across multiple SIEM platforms.
+
+### **Specialization Areas**
+- **Platform-Specific Rules**: Windows, Linux, macOS, and cloud platform detection
+- **SIEM Integration**: Rules optimized for Splunk, Elastic, QRadar, Sentinel, and other platforms
+- **Threat Hunting**: Proactive threat detection and hunting queries
+- **Compliance Monitoring**: Rules for regulatory compliance and audit requirements
+- **Incident Response**: Real-time detection for active incident scenarios
+
+## Core Capabilities
+
+### **Multi-Platform Detection**
+
+#### **Windows Security**
+- **Authentication Events**: Login anomalies, credential attacks, privilege escalation
+- **Process Creation**: Suspicious process execution and command line analysis
+- **Registry Modifications**: Persistence mechanisms and configuration changes
+- **Network Activity**: Lateral movement, command and control communications
+- **PowerShell Activity**: Script execution, obfuscation, and malicious commands
+
+#### **Linux/Unix Security**
+- **System Calls**: Suspicious system activity and privilege escalation
+- **File System Events**: Unauthorized access, data exfiltration, persistence
+- **Network Connections**: Unusual network activity and backdoor communications
+- **Authentication Logs**: SSH attacks, sudo abuse, account compromise
+- **Container Security**: Docker and Kubernetes threat detection
+
+#### **Cloud Platform Security**
+- **AWS CloudTrail**: API abuse, privilege escalation, data access anomalies
+- **Azure Activity Logs**: Resource manipulation, identity attacks, data breaches
+- **Google Cloud Audit**: Service abuse, unauthorized access, configuration changes
+- **Office 365**: Email security, SharePoint anomalies, Teams compromise
+- **Multi-Cloud**: Cross-platform attack detection and correlation
+
+### **Attack Technique Coverage**
+- **MITRE ATT&CK**: Complete coverage of enterprise attack techniques
+- **Living-off-the-Land**: Abuse of legitimate tools and processes
+- **Supply Chain Attacks**: Software update compromise and dependency attacks
+- **Advanced Persistent Threats**: Long-term campaign detection patterns
+- **Insider Threats**: Anomalous user behavior and data access patterns
+
+## Key Features
+
+### **Expert Rule Generation**
+- **Precision Targeting**: Rules with high detection accuracy and low false positives
+- **Performance Optimization**: Efficient queries designed for high-volume log processing
+- **Platform Compatibility**: Rules that translate effectively across different SIEM platforms
+- **Maintenance Simplicity**: Clear, documented rules easy to understand and modify
+
+### **Comprehensive Detection Logic**
+- **Behavioral Analysis**: Detection based on attack behavior patterns
+- **Anomaly Detection**: Statistical and threshold-based anomaly identification
+- **Correlation Rules**: Multi-event detection spanning time windows
+- **Threat Intelligence**: Integration of IOCs and threat intelligence feeds
+
+### **Professional Documentation**
+- **Rule Metadata**: Comprehensive tagging and categorization
+- **Detection Rationale**: Clear explanation of detection logic and assumptions
+- **Deployment Guidelines**: Platform-specific deployment instructions
+- **Tuning Recommendations**: Guidance for environment-specific optimization
+
+## Common Use Cases
+
+### **Lateral Movement Detection**
+```
+User: "Create a Sigma rule to detect SMB lateral movement using administrative shares."
+
+Sigma Agent Response: Generates comprehensive rule including:
+- Windows security event correlation
+- Credential usage patterns
+- Network share access anomalies
+- Time-based analysis for rapid movement
+- Administrative privilege escalation indicators
+```
+
+### **Data Exfiltration Monitoring**
+```
+User: "I need rules to detect large data transfers to external cloud storage."
+
+Sigma Agent Response: Develops targeted rules featuring:
+- Network traffic volume analysis
+- Cloud service domain identification
+- User behavior baseline deviations
+- File access pattern anomalies
+- Compression and encryption indicators
+```
+
+### **Privilege Escalation Detection**
+```
+User: "Generate Sigma rules for detecting Windows privilege escalation attempts."
+
+Sigma Agent Response: Provides comprehensive rules for:
+- Token manipulation techniques
+- Service creation and modification
+- Registry privilege escalation
+- Scheduled task abuse
+- DLL hijacking attempts
+```
+
+## Rule Categories
+
+### **Authentication & Access**
+- **Brute Force Attacks**: Failed login pattern detection
+- **Credential Stuffing**: Automated credential testing
+- **Privilege Escalation**: Unauthorized permission elevation
+- **Account Compromise**: Suspicious account activity patterns
+- **Multi-Factor Authentication**: MFA bypass attempts
+
+### **Network Security**
+- **Command & Control**: C2 communication detection
+- **Data Exfiltration**: Unauthorized data transfer patterns
+- **Lateral Movement**: Internal network compromise spread
+- **VPN Anomalies**: Virtual private network abuse
+- **DNS Tunneling**: Covert channel communication
+
+### **Endpoint Security**
+- **Malware Execution**: Malicious file execution patterns
+- **Process Injection**: Code injection and hollowing techniques
+- **Persistence Mechanisms**: System modification for persistence
+- **Anti-Forensics**: Evidence deletion and timestomping
+- **Living-off-the-Land**: Legitimate tool abuse
+
+### **Cloud & SaaS Security**
+- **Resource Abuse**: Unauthorized cloud resource usage
+- **Data Access Anomalies**: Unusual data access patterns
+- **Configuration Changes**: Security setting modifications
+- **Identity Attacks**: Cloud identity and access management abuse
+- **Service Abuse**: Cloud service misuse and compromise
+
+## Expert Rule Examples
+
+### **Advanced PowerShell Detection**
+```yaml
+title: Suspicious PowerShell Execution with Obfuscation
+id: 12345678-1234-1234-1234-123456789abc
+status: experimental
+description: Detects potentially malicious PowerShell execution with obfuscation techniques
+author: Binalyze Fleet AI - Sigma Agent
+date: 2024/01/01
+tags:
+    - attack.execution
+    - attack.t1059.001
+    - attack.defense_evasion
+    - attack.t1027
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_powershell:
+        Image|endswith: '\powershell.exe'
+        CommandLine|contains|all:
+            - '-enc'
+            - '-nop'
+            - '-w hidden'
+    selection_obfuscation:
+        CommandLine|contains:
+            - 'bypass'
+            - 'unrestricted'
+            - 'iex'
+            - 'invoke-expression'
+    filter_legitimate:
+        ParentImage|endswith:
+            - '\explorer.exe'
+            - '\cmd.exe'
+        CommandLine|contains: 'legitimate_script.ps1'
+    condition: (selection_powershell and selection_obfuscation) and not filter_legitimate
+falsepositives:
+    - Legitimate administration scripts with obfuscation
+    - Security tools using encoded PowerShell
+level: medium
+```
+
+### **Cloud Resource Abuse Detection**
+```yaml
+title: Unusual AWS EC2 Instance Creation Pattern
+id: 87654321-4321-4321-4321-210987654321
+status: stable
+description: Detects unusual patterns in EC2 instance creation that may indicate resource abuse
+author: Binalyze Fleet AI - Sigma Agent
+date: 2024/01/01
+tags:
+    - attack.resource_development
+    - attack.t1583.001
+logsource:
+    service: cloudtrail
+    product: aws
+detection:
+    selection:
+        eventName: 'RunInstances'
+        responseElements.instancesSet.items.instanceType:
+            - 'c5.24xlarge'
+            - 'c5.18xlarge'
+            - 'c5.12xlarge'
+    timeframe: 10m
+    condition: selection | count() by sourceIPAddress > 5
+falsepositives:
+    - Legitimate auto-scaling activities
+    - Planned infrastructure deployments
+level: high
+```
+
+## Best Practices
+
+### **Effective Rule Requests**
+- **Attack Context**: Describe the attack technique or behavior to detect
+- **Log Sources**: Specify available log sources and SIEM platform
+- **Environment Details**: Provide context about network, users, and systems
+- **Performance Requirements**: Mention query performance and resource constraints
+
+### **Rule Deployment**
+- **Test Environment**: Validate rules in non-production environments first
+- **Baseline Establishment**: Understand normal activity patterns before deployment
+- **Threshold Tuning**: Adjust detection thresholds based on environment characteristics
+- **Performance Monitoring**: Monitor rule performance and resource utilization
+
+### **Quality Assurance**
+- **False Positive Testing**: Validate rules against known benign activity
+- **True Positive Validation**: Ensure rules detect intended attack techniques
+- **Threat Intelligence**: Cross-reference with current threat intelligence
+- **Peer Review**: Have security team members review detection logic
+
+## Platform Integration
+
+### **SIEM Platform Support**
+- **Splunk**: Native SPL query translation and optimization
+- **Elastic Stack**: Elasticsearch query language conversion
+- **IBM QRadar**: AQL query format and rule deployment
+- **Microsoft Sentinel**: KQL (Kusto Query Language) translation
+- **Sumo Logic**: Platform-specific query optimization
+
+### **Security Orchestration**
+- **SOAR Integration**: Rules designed for automated response workflows
+- **Threat Intel Platforms**: IOC enrichment and attribution correlation
+- **Incident Response**: Real-time alerting and escalation procedures
+- **Compliance Reporting**: Audit trail and regulatory reporting support
+
+## Advanced Features
+
+### **Behavioral Analytics**
+- **User Behavior Analysis**: Anomaly detection based on user activity patterns
+- **Entity Behavioral Modeling**: Asset and service behavior baseline establishment
+- **Statistical Analysis**: Machine learning enhanced anomaly detection
+- **Time Series Analysis**: Temporal pattern recognition and seasonal adjustments
+
+### **Threat Intelligence Integration**
+- **IOC Correlation**: Rules incorporating threat intelligence indicators
+- **Campaign Attribution**: Detection patterns linking to specific threat campaigns
+- **Threat Actor Profiling**: Rules targeting specific adversary techniques
+- **Contextual Enrichment**: Automatic enrichment with threat intelligence data
+
+## Performance Optimization
+
+### **Query Efficiency**
+- **Index Optimization**: Rules designed for efficient log index utilization
+- **Field Selection**: Minimal field requirements for faster processing
+- **Time Window Optimization**: Appropriate time ranges for detection effectiveness
+- **Resource Management**: CPU and memory efficient query construction
+
+### **Scalability Features**
+- **High-Volume Processing**: Rules optimized for enterprise-scale log volumes
+- **Distributed Processing**: Queries designed for cluster-based SIEM platforms
+- **Incremental Analysis**: Efficient processing of streaming log data
+- **Storage Optimization**: Rules minimizing long-term storage requirements
+
+## Threat Hunting Workflows
+
+### **Hypothesis-Driven Hunting**
+- **Threat Model Development**: Rules supporting specific threat hypotheses
+- **Evidence Collection**: Queries for gathering supporting evidence
+- **Pattern Analysis**: Detection of subtle attack patterns and TTPs
+- **Campaign Reconstruction**: Rules for linking disparate attack activities
+
+### **Proactive Detection**
+- **Baseline Deviation**: Rules identifying departures from normal activity
+- **Anomaly Clustering**: Detection of related anomalous events
+- **Predictive Indicators**: Early warning signs of potential attacks
+- **Threat Landscape Monitoring**: Rules tracking emerging threat trends
+
+## Getting Help
+
+### **Rule Development Support**
+- **Detection Logic**: Assistance with complex detection logic development
+- **Platform Translation**: Help converting rules between SIEM platforms
+- **Performance Tuning**: Optimization for specific environments and use cases
+- **Integration Guidance**: Best practices for rule deployment and management
+
+### **Expert Consultation**
+- **Advanced Threats**: Detection for sophisticated and novel attack techniques
+- **Custom Environments**: Rules tailored for unique infrastructure and requirements
+- **Compliance Requirements**: Detection rules meeting regulatory and audit standards
+- **Threat Intelligence**: Integration of proprietary and commercial threat feeds
+
+---
+
+**Ready to Generate Sigma Rules?** Access the Sigma Agent by using `@sigma` mentions in your conversations, or describe your log-based detection needs to get started with professional-grade Sigma rule generation. 

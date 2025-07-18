@@ -1,0 +1,259 @@
+---
+title: "YARA Agent"
+description: "Specialized AI agent for YARA rule generation and malware detection"
+---
+
+# YARA Agent
+
+The YARA Agent is a specialized AI agent dedicated to generating high-quality YARA rules for malware detection and analysis. Drawing from extensive malware research and pattern recognition expertise, the YARA Agent helps cybersecurity professionals create effective detection rules for files, memory, and behavioral analysis.
+
+## Overview
+
+YARA (Yet Another Recursive Acronym) is a powerful tool used by malware researchers and detection engineers to identify and classify malware families. The YARA Agent leverages deep understanding of malware patterns, file structures, and detection techniques to generate professional-grade YARA rules.
+
+### **Specialization Areas**
+- **Malware Family Detection**: Rules targeting specific malware families and variants
+- **File Format Analysis**: Detection based on PE, ELF, and other executable formats
+- **Memory Pattern Matching**: Rules for detecting malware in memory dumps
+- **Behavioral Signatures**: Detection based on malware behavior patterns
+- **Evasion Technique Detection**: Rules targeting anti-analysis and obfuscation methods
+
+## Core Capabilities
+
+### **Rule Generation Types**
+
+#### **File-Based Detection**
+- **PE File Analysis**: Windows executable structure and characteristics
+- **ELF File Analysis**: Linux binary format and patterns
+- **Document Malware**: Office documents, PDFs with embedded threats
+- **Script-Based Malware**: PowerShell, JavaScript, VBS, and other script threats
+- **Archive Embedded Threats**: Malware hidden in compressed files
+
+#### **Memory-Based Detection**
+- **Runtime Behavior**: Patterns visible only during execution
+- **Injection Techniques**: Code injection and process hollowing detection
+- **Network Indicators**: Command and control communication patterns
+- **Cryptographic Constants**: Encryption keys and algorithm signatures
+- **String Obfuscation**: Deobfuscated strings and decoded content
+
+#### **Hybrid Detection Rules**
+- **Multi-Stage Malware**: Rules covering entire attack chains
+- **Polymorphic Variants**: Detection resilient to code mutations
+- **Fileless Malware**: Memory-only threat detection
+- **Living-off-the-Land**: Abuse of legitimate tools and processes
+
+### **Advanced Pattern Recognition**
+- **Fuzzy Hashing**: Similarity-based detection for malware variants
+- **Structural Analysis**: PE section characteristics and anomalies
+- **Behavioral Clustering**: Grouping similar malware behaviors
+- **Attribution Signatures**: Code reuse and developer fingerprints
+
+## Key Features
+
+### **Expert Rule Crafting**
+- **Optimization**: Rules balanced for accuracy and performance
+- **False Positive Minimization**: Careful pattern selection to avoid benign matches
+- **Maintainability**: Clear, documented rules easy to understand and modify
+- **Scalability**: Rules designed for high-volume scanning environments
+
+### **Comprehensive Analysis**
+- **Static Analysis**: File structure, strings, and metadata examination
+- **Dynamic Analysis**: Runtime behavior and memory pattern analysis
+- **Threat Intelligence Integration**: IOCs and campaign-specific indicators
+- **Family Classification**: Accurate malware family and variant identification
+
+### **Professional Documentation**
+- **Rule Comments**: Detailed explanations of detection logic
+- **Metadata Tags**: Proper categorization and attribution information
+- **Performance Notes**: Guidance on deployment and optimization
+- **Testing Recommendations**: Validation approaches and test cases
+
+## Common Use Cases
+
+### **Malware Family Detection**
+```
+User: "I need a YARA rule to detect Emotet banking trojan variants."
+
+YARA Agent Response: Generates comprehensive rule including:
+- PE structure characteristics specific to Emotet
+- String patterns from configuration data
+- Cryptographic constants and algorithms
+- Network communication indicators
+- Behavioral signatures for module loading
+```
+
+### **Suspicious File Analysis**
+```
+User: "Create a YARA rule for this suspicious PowerShell dropper with hash: abc123..."
+
+YARA Agent Response: Develops targeted rule featuring:
+- Obfuscated string patterns
+- Command execution characteristics
+- Payload delivery mechanisms
+- Environmental checks and evasion techniques
+```
+
+### **Memory Forensics Support**
+```
+User: "Generate rules for detecting ransomware activity in memory dumps."
+
+YARA Agent Response: Provides memory-specific rules for:
+- File encryption routines
+- Ransom note generation patterns
+- Registry modification activities
+- Process injection techniques
+```
+
+## Rule Categories
+
+### **Malware Families**
+- **Banking Trojans**: Zeus, Emotet, TrickBot, QakBot variants
+- **Ransomware**: WannaCry, Ryuk, Maze, REvil families
+- **APT Tools**: Custom tools from advanced persistent threat groups
+- **Commodity Malware**: Widely distributed malware families
+- **Mobile Malware**: Android and iOS threat detection
+
+### **Attack Techniques**
+- **Phishing Droppers**: Email attachment malware delivery
+- **Living-off-the-Land**: Abuse of legitimate system tools
+- **Supply Chain Attacks**: Compromised software and updates
+- **Fileless Attacks**: Memory-resident and registry-based persistence
+- **Lateral Movement**: Network propagation and credential theft
+
+### **File Types**
+- **Executables**: PE, ELF, Mach-O binary analysis
+- **Documents**: Office macros, PDF JavaScript, RTF exploits
+- **Archives**: ZIP, RAR embedded threat detection
+- **Scripts**: PowerShell, JavaScript, VBScript, Python malware
+- **Containers**: Docker images and virtualization threats
+
+## Expert Rule Examples
+
+### **Advanced PE Analysis Rule**
+```yara
+rule Advanced_Malware_PE_Characteristics {
+    meta:
+        description = "Detects advanced malware with specific PE characteristics"
+        author = "Binalyze Fleet AI - YARA Agent"
+        date = "2024-01-01"
+        family = "Generic Advanced Malware"
+        severity = "High"
+        
+    strings:
+        $pe_anomaly = { 4D 5A [2-4] 00 00 [4] 00 00 [4] FF FF }
+        $entropy_marker = { E8 ?? ?? ?? ?? 58 83 C0 ?? 50 }
+        $anti_debug = "IsDebuggerPresent"
+        $vm_detect = "VirtualBox" nocase
+        
+    condition:
+        uint16(0) == 0x5A4D and
+        filesize > 10KB and filesize < 10MB and
+        pe.number_of_sections > 3 and
+        pe.number_of_sections < 15 and
+        $pe_anomaly and
+        ($entropy_marker or ($anti_debug and $vm_detect))
+}
+```
+
+### **Memory Pattern Detection**
+```yara
+rule Memory_Injection_Techniques {
+    meta:
+        description = "Detects process injection in memory dumps"
+        author = "Binalyze Fleet AI - YARA Agent"
+        type = "Memory"
+        technique = "Process Injection"
+        
+    strings:
+        $alloc = "VirtualAllocEx"
+        $write = "WriteProcessMemory"
+        $thread = "CreateRemoteThread"
+        $nt_alloc = "NtAllocateVirtualMemory"
+        $nt_write = "NtWriteVirtualMemory"
+        
+    condition:
+        any of ($alloc, $nt_alloc) and
+        any of ($write, $nt_write) and
+        $thread
+}
+```
+
+## Best Practices
+
+### **Effective Rule Requests**
+- **Provide Context**: Share malware family, attack vector, or behavior description
+- **Include Samples**: Provide file hashes, strings, or behavioral indicators when available
+- **Specify Scope**: Clarify if rules are for files, memory, network, or hybrid detection
+- **Performance Requirements**: Mention scanning volume and performance constraints
+
+### **Rule Deployment**
+- **Test Environment**: Always validate rules in controlled environments first
+- **Performance Monitoring**: Monitor rule performance and adjust as needed
+- **False Positive Tracking**: Implement feedback loops for rule refinement
+- **Regular Updates**: Keep rules current with evolving threat landscape
+
+### **Quality Assurance**
+- **Peer Review**: Have security team members review generated rules
+- **Threat Intelligence**: Cross-reference with current threat intelligence
+- **Coverage Testing**: Ensure rules detect intended malware families
+- **Negative Testing**: Verify rules don't trigger on benign software
+
+## Integration Capabilities
+
+### **YARA Ecosystem**
+- **VirusTotal Integration**: Rules compatible with VT YARA scanning
+- **YARA-X Support**: Next-generation YARA engine compatibility
+- **Custom Modules**: Integration with specialized YARA modules
+- **Multi-Platform**: Rules designed for Windows, Linux, and macOS
+
+### **Security Platform Integration**
+- **SIEM Platforms**: Rules formatted for security information systems
+- **Endpoint Detection**: Integration with EDR and antivirus systems
+- **Network Security**: Inline scanning and network appliance deployment
+- **Sandbox Analysis**: Automated rule generation from sandbox results
+
+## Advanced Features
+
+### **Machine Learning Enhanced Rules**
+- **Pattern Discovery**: AI-assisted identification of subtle malware patterns
+- **Variant Generation**: Rules robust against malware mutations
+- **Clustering Analysis**: Rules targeting malware family clusters
+- **Behavioral Modeling**: Detection based on behavioral pattern analysis
+
+### **Threat Intelligence Integration**
+- **IOC Correlation**: Rules incorporating threat intelligence indicators
+- **Campaign Tracking**: Rules linking malware to specific campaigns
+- **Attribution Analysis**: Patterns for threat actor identification
+- **Timeline Correlation**: Rules for attack sequence detection
+
+## Performance Optimization
+
+### **Efficiency Guidelines**
+- **String Optimization**: Efficient string patterns and anchoring
+- **Condition Logic**: Optimized boolean logic and short-circuiting
+- **File Size Constraints**: Appropriate file size limitations
+- **Memory Usage**: Rules designed for minimal memory consumption
+
+### **Scalability Considerations**
+- **High-Volume Scanning**: Rules optimized for enterprise-scale deployment
+- **Resource Management**: CPU and memory usage optimization
+- **Parallel Processing**: Rules designed for concurrent execution
+- **Incremental Updates**: Efficient rule update and deployment strategies
+
+## Getting Help
+
+### **Rule Development Assistance**
+- **Pattern Analysis**: Help identifying distinctive malware patterns
+- **Rule Optimization**: Performance tuning and false positive reduction
+- **Testing Guidance**: Validation approaches and test case development
+- **Deployment Advice**: Best practices for production rule deployment
+
+### **Expert Consultation**
+- **Complex Malware**: Advanced persistent threats and custom malware
+- **Evasion Techniques**: Anti-analysis and obfuscation detection
+- **Performance Issues**: Rule optimization and efficiency improvements
+- **Integration Challenges**: Platform-specific deployment requirements
+
+---
+
+**Ready to Generate YARA Rules?** Access the YARA Agent by using `@yara` mentions in your conversations, or describe your malware detection needs to get started with professional-grade YARA rule generation. 

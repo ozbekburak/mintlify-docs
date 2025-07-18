@@ -1,0 +1,225 @@
+---
+title: "Agent Routing"
+description: "Intelligent routing system for directing queries to specialized AI agents"
+---
+
+# Agent Routing System
+
+Binalyze Fleet AI features an intelligent routing system that automatically directs your queries to the most appropriate specialized agent based on the content, context, and intent of your cybersecurity questions. This ensures you always receive expert-level assistance from the agent best equipped to handle your specific needs.
+
+## How Routing Works
+
+### **Intelligent Analysis**
+The routing system analyzes multiple factors to determine the optimal agent:
+- **Query Content**: Keywords, technical terms, and cybersecurity contexts
+- **Intent Detection**: Understanding what type of assistance you're seeking
+- **Domain Expertise**: Matching your needs with agent specializations
+- **Conversation Context**: Previous discussion topics and ongoing investigations
+
+### **Expert Mentions**
+You can explicitly route to specific agents using expert mentions:
+- **@yara**: Direct access to YARA Agent for malware detection rules
+- **@sigma**: Access Sigma Agent for log-based detection rules
+- **@osquery**: Connect to OSQuery Agent for endpoint queries
+- **@fleet**: Access general Fleet Agent for DFIR guidance
+
+### **Automatic Routing**
+When no explicit mention is used, the system intelligently routes based on:
+- **Technical Indicators**: Detection of YARA, Sigma, or OSQuery-related content
+- **Investigation Type**: Malware analysis, log analysis, or endpoint investigation
+- **Tool Requirements**: Need for specific detection rule generation
+- **Context Switching**: Recognizing when expertise focus should change
+
+## Routing Decision Factors
+
+### **Content Analysis**
+The system examines your query for specific indicators:
+
+**YARA Agent Triggers**:
+- Malware detection, file analysis, memory forensics
+- Binary analysis, PE/ELF examination, signature creation
+- Pattern matching, behavioral analysis, anti-analysis techniques
+- Family classification, variant detection, attribution
+
+**Sigma Agent Triggers**:
+- Log analysis, SIEM queries, event correlation
+- Windows/Linux/macOS security events, cloud platform logs
+- Threat hunting, behavioral detection, anomaly identification
+- Platform-specific detection (Splunk, Elastic, Sentinel, etc.)
+
+**OSQuery Agent Triggers**:
+- Endpoint investigation, system queries, configuration analysis
+- Process monitoring, file system events, network connections
+- Cross-platform investigation, compliance verification
+- Real-time monitoring, incident response data collection
+
+**Fleet Agent Triggers**:
+- General DFIR guidance, investigation strategy, threat analysis
+- Multi-domain questions, high-level planning, workflow guidance
+- Mixed requirements needing coordination across specialties
+
+### **Context Preservation**
+- **Conversation History**: Understanding ongoing investigation context
+- **Previous Agent Interactions**: Maintaining continuity across agent switches
+- **Investigation Phase**: Adapting to different stages of security investigations
+- **Complexity Assessment**: Determining if specialized or general expertise is needed
+
+## Expert Routing Examples
+
+### **Automatic Malware Detection Routing**
+```
+User Query: "I need to create detection rules for a new ransomware variant 
+that encrypts files and modifies registry keys."
+
+Routing Decision: → YARA Agent
+Reason: Query indicates need for malware detection rule creation based on 
+file encryption behavior and system modifications.
+```
+
+### **Log Analysis Routing**
+```
+User Query: "How can I detect lateral movement in Windows Event Logs 
+using our Splunk environment?"
+
+Routing Decision: → Sigma Agent  
+Reason: Query specifically mentions log analysis, Windows events, and 
+SIEM platform (Splunk) integration.
+```
+
+### **Endpoint Investigation Routing**
+```
+User Query: "I want to check all running processes and network connections 
+on our Linux servers to find suspicious activity."
+
+Routing Decision: → OSQuery Agent
+Reason: Query focuses on endpoint data collection across multiple systems 
+for investigation purposes.
+```
+
+### **General DFIR Guidance Routing**
+```
+User Query: "We have a suspected data breach. What's our incident response 
+strategy and what evidence should we collect?"
+
+Routing Decision: → Fleet Agent
+Reason: High-level strategic guidance request covering multiple DFIR domains 
+requiring comprehensive planning.
+```
+
+## Multi-Agent Workflows
+
+### **Sequential Agent Access**
+Complex investigations often require multiple agents:
+
+1. **Initial Assessment** (Fleet Agent)
+   - Investigation strategy and planning
+   - Evidence prioritization and methodology
+
+2. **Specialized Analysis** (Domain Experts)
+   - YARA Agent: Malware rule generation
+   - Sigma Agent: Log-based detection rules  
+   - OSQuery Agent: Endpoint data collection
+
+3. **Integration and Follow-up** (Fleet Agent)
+   - Correlation of findings across domains
+   - Implementation guidance and next steps
+
+### **Context Handoffs**
+When routing between agents, context is preserved:
+- **Investigation Background**: Incident details and current findings
+- **Previously Generated Content**: Rules, queries, and analysis results
+- **Ongoing Requirements**: Continuing investigation needs and objectives
+- **Lessons Learned**: Insights gained from previous agent interactions
+
+## Team-Based Routing
+
+### **Detection Team Activation**
+For comprehensive detection needs:
+```
+User Query: "I need complete detection coverage for a new APT campaign 
+including file signatures, log detection, and endpoint monitoring."
+
+Routing Decision: → Detection Team
+Team Composition: YARA + Sigma + OSQuery Agents
+Coordination: Collaborative rule generation across all detection domains
+```
+
+### **Blacklight Team Integration**
+For complex multi-domain investigations:
+```
+User Query: "Coordinate investigation of advanced persistent threat with 
+file analysis, log correlation, and endpoint investigation."
+
+Routing Decision: → Blacklight Team
+Team Approach: Orchestrated workflow across all specialized agents
+Management: Centralized conversation state and cross-agent coordination
+```
+
+## Routing Optimization
+
+### **Learning from Interactions**
+The routing system continuously improves through:
+- **User Feedback**: Explicit and implicit feedback on routing decisions
+- **Conversation Outcomes**: Success metrics for different routing choices
+- **Domain Evolution**: Adapting to new cybersecurity techniques and tools
+- **Context Refinement**: Improving understanding of investigation patterns
+
+### **Performance Considerations**
+- **Response Time**: Optimizing routing decisions for rapid response
+- **Agent Availability**: Load balancing across specialized agents
+- **Context Efficiency**: Minimizing context transfer overhead
+- **User Experience**: Seamless transitions between agents
+
+## Best Practices for Users
+
+### **Effective Query Construction**
+- **Be Specific**: Include technical details relevant to your investigation
+- **Provide Context**: Mention the type of analysis or detection needed
+- **Indicate Tools**: Reference specific platforms or technologies when relevant
+- **State Objectives**: Clearly describe what you want to accomplish
+
+### **Working with Expert Mentions**
+- **Direct Access**: Use @mentions when you know exactly which agent you need
+- **Follow Recommendations**: Trust automatic routing for optimal expertise matching
+- **Context Sharing**: Provide background when switching between agents
+- **Iterative Refinement**: Continue conversations to refine and improve results
+
+### **Multi-Agent Investigations**
+- **Start Broad**: Begin with general planning and strategy (Fleet Agent)
+- **Get Specific**: Move to specialized agents for technical implementation
+- **Coordinate Results**: Return to Fleet Agent for integration and planning
+- **Document Workflow**: Maintain investigation documentation across agents
+
+## Troubleshooting Routing
+
+### **Unexpected Routing**
+If you're routed to an unexpected agent:
+- **Check Context**: Review how your query might be interpreted
+- **Use Explicit Mentions**: Use @agent mentions for direct access
+- **Provide Clarification**: Add more specific details about your needs
+- **Request Redirection**: Ask to be connected to a different agent
+
+### **No Specialized Routing**
+If staying with general Fleet Agent when expecting specialization:
+- **Include Technical Terms**: Use domain-specific terminology
+- **Mention Tools**: Reference specific technologies or platforms
+- **State Requirements**: Explicitly mention rule generation or query development
+- **Use Expert Mentions**: Directly access specialized agents with @ syntax
+
+## Advanced Routing Features
+
+### **Contextual Intelligence**
+- **Investigation Phase Recognition**: Understanding where you are in an investigation
+- **Skill Gap Identification**: Detecting when specialized expertise is needed
+- **Workflow Optimization**: Suggesting optimal agent sequences for complex tasks
+- **Resource Coordination**: Managing agent capacity and response times
+
+### **Future Enhancements**
+- **Predictive Routing**: Anticipating agent needs based on investigation patterns
+- **Dynamic Teaming**: Creating custom agent teams for specific investigation types
+- **Cross-Reference Intelligence**: Automatic correlation of findings across agents
+- **Workflow Templates**: Pre-configured routing patterns for common investigation types
+
+---
+
+**Understanding Routing**: The routing system is designed to be transparent and helpful. If you ever want to understand why you were routed to a specific agent or need different expertise, simply ask! The system is built to adapt to your investigation needs and provide the most effective cybersecurity assistance. 

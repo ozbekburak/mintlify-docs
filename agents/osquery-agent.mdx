@@ -1,0 +1,342 @@
+---
+title: "OSQuery Agent"
+description: "Specialized AI agent for OSQuery rule generation and endpoint telemetry analysis"
+---
+
+# OSQuery Agent
+
+The OSQuery Agent is a specialized AI agent dedicated to generating high-quality OSQuery queries for endpoint telemetry collection and system investigation. With deep expertise in operating system internals, security monitoring, and incident response, the OSQuery Agent helps security teams create effective queries for endpoint detection, investigation, and continuous monitoring.
+
+## Overview
+
+OSQuery is a powerful framework that uses SQL to query operating system information, making it invaluable for security monitoring, incident response, and compliance auditing. The OSQuery Agent leverages comprehensive knowledge of system internals, attack techniques, and forensic methodologies to generate professional-grade queries for multi-platform environments.
+
+### **Specialization Areas**
+- **Cross-Platform Investigation**: Windows, macOS, and Linux endpoint analysis
+- **Real-Time Monitoring**: Continuous security monitoring and alerting
+- **Incident Response**: Rapid investigation and evidence collection
+- **Compliance Auditing**: Configuration verification and security posture assessment
+- **Threat Hunting**: Proactive threat detection across endpoint infrastructure
+
+## Core Capabilities
+
+### **Multi-Platform Expertise**
+
+#### **Windows Endpoints**
+- **Process Analysis**: Running processes, command lines, and parent-child relationships
+- **Registry Monitoring**: Registry keys, values, and modification tracking
+- **File System Events**: File creation, modification, deletion, and access patterns
+- **Network Connections**: Active connections, listening ports, and network processes
+- **Service Management**: Windows services, drivers, and startup programs
+- **Event Log Analysis**: Windows event logs and security auditing
+- **WMI Investigation**: Windows Management Instrumentation queries and analysis
+
+#### **macOS Systems**
+- **Process Tree Analysis**: Process relationships and execution patterns
+- **LaunchAgents/Daemons**: Persistence mechanisms and startup items
+- **Kernel Extensions**: System modifications and security tool detection
+- **File System Monitoring**: HFS+ and APFS file system analysis
+- **Network Stack Analysis**: Network connections and protocol analysis
+- **System Integrity**: SIP status, security settings, and configuration verification
+- **Application Analysis**: Installed applications, bundles, and signature verification
+
+#### **Linux Environments**
+- **Process Monitoring**: Process analysis, command lines, and system calls
+- **File System Events**: Inotify events, file permissions, and access patterns
+- **Network Analysis**: Netlink sockets, iptables rules, and network interfaces
+- **System Configuration**: Service management, cron jobs, and startup scripts
+- **User Activity**: Login sessions, command history, and privilege usage
+- **Container Security**: Docker containers, images, and runtime analysis
+- **Kernel Modules**: Loaded modules, device drivers, and rootkit detection
+
+### **Investigation Techniques**
+- **Timeline Reconstruction**: Temporal analysis of system events and activities
+- **Lateral Movement Detection**: Network propagation and credential usage patterns
+- **Persistence Identification**: Mechanism discovery for maintaining system access
+- **Data Exfiltration Analysis**: File access patterns and network transfer detection
+- **Privilege Escalation**: Unauthorized permission elevation and exploitation
+
+## Key Features
+
+### **Expert Query Development**
+- **Performance Optimization**: Queries designed for minimal system impact
+- **Precision Targeting**: Focused queries reducing noise and false positives
+- **Cross-Platform Compatibility**: Queries adaptable across different operating systems
+- **Scalability**: Efficient queries suitable for enterprise-scale deployments
+
+### **Comprehensive System Coverage**
+- **System State Analysis**: Complete system configuration and security posture
+- **Runtime Monitoring**: Real-time detection of suspicious activities
+- **Historical Investigation**: Analysis of past events and system changes
+- **Compliance Verification**: Configuration checks and policy enforcement
+
+### **Professional Documentation**
+- **Query Explanation**: Detailed descriptions of query logic and purpose
+- **Performance Notes**: Resource usage and optimization recommendations
+- **Deployment Guidance**: Best practices for query implementation
+- **Use Case Examples**: Practical scenarios and investigation workflows
+
+## Common Use Cases
+
+### **Malware Investigation**
+```
+User: "Create OSQuery queries to detect persistence mechanisms used by malware."
+
+OSQuery Agent Response: Generates comprehensive queries including:
+- Registry autorun locations on Windows
+- LaunchAgents and LaunchDaemons on macOS
+- Systemd services and cron jobs on Linux
+- Browser extension and plugin analysis
+- Scheduled task enumeration and analysis
+```
+
+### **Network Reconnaissance**
+```
+User: "I need queries to identify lateral movement and network reconnaissance."
+
+OSQuery Agent Response: Develops targeted queries featuring:
+- Active network connections and listening ports
+- Process-to-network mapping and analysis
+- SMB share enumeration and access patterns
+- Remote desktop and SSH connection tracking
+- Network service discovery and port scanning indicators
+```
+
+### **Privilege Escalation Detection**
+```
+User: "Generate queries to detect privilege escalation attempts on endpoints."
+
+OSQuery Agent Response: Provides comprehensive queries for:
+- SUID/SGID file analysis on Unix systems
+- Token manipulation detection on Windows
+- Sudo usage patterns and anomalies
+- Service account abuse and privilege changes
+- Kernel exploit indicators and system modifications
+```
+
+## Query Categories
+
+### **System Inventory & Configuration**
+- **Hardware Inventory**: System specifications, hardware components, and device enumeration
+- **Software Inventory**: Installed applications, patches, and version tracking
+- **Security Configuration**: Security settings, policies, and compliance verification
+- **User Management**: Account enumeration, group membership, and permission analysis
+- **Network Configuration**: Interface settings, routing tables, and firewall rules
+
+### **Security Monitoring**
+- **Process Monitoring**: Process creation, execution patterns, and anomaly detection
+- **File System Monitoring**: File modifications, access patterns, and integrity verification
+- **Network Monitoring**: Connection tracking, protocol analysis, and traffic patterns
+- **Registry Monitoring**: Windows registry changes and security-relevant modifications
+- **Authentication Monitoring**: Login events, credential usage, and access patterns
+
+### **Incident Response**
+- **Evidence Collection**: Forensic artifact gathering and preservation
+- **Timeline Analysis**: Event correlation and temporal reconstruction
+- **Indicator Verification**: IOC validation and threat confirmation
+- **Containment Support**: Isolation verification and remediation tracking
+- **Impact Assessment**: System modification analysis and damage evaluation
+
+### **Threat Hunting**
+- **Behavioral Analysis**: Anomalous activity detection and pattern recognition
+- **Persistence Hunting**: Hidden persistence mechanism discovery
+- **Living-off-the-Land**: Legitimate tool abuse detection
+- **Advanced Threats**: APT technique identification and campaign tracking
+- **Insider Threats**: Anomalous user behavior and data access patterns
+
+## Expert Query Examples
+
+### **Advanced Process Analysis**
+```sql
+-- Detect suspicious process execution patterns
+SELECT 
+    p.pid,
+    p.name,
+    p.path,
+    p.cmdline,
+    p.parent,
+    pp.name AS parent_name,
+    pp.path AS parent_path,
+    p.start_time,
+    u.username,
+    f.size,
+    f.md5,
+    f.sha256
+FROM processes p
+LEFT JOIN processes pp ON p.parent = pp.pid
+LEFT JOIN users u ON p.uid = u.uid
+LEFT JOIN file f ON p.path = f.path
+WHERE 
+    -- Processes with suspicious characteristics
+    (p.cmdline LIKE '%powershell%' AND p.cmdline LIKE '%-enc%')
+    OR (p.cmdline LIKE '%cmd%' AND p.cmdline LIKE '%/c%')
+    OR (p.name LIKE '%.tmp' OR p.name LIKE '%.temp')
+    OR (p.path LIKE '%temp%' OR p.path LIKE '%tmp%')
+    -- Exclude known legitimate processes
+    AND p.path NOT LIKE 'C:\\Windows\\System32\\%'
+    AND p.path NOT LIKE 'C:\\Program Files\\%'
+ORDER BY p.start_time DESC;
+```
+
+### **Network Connection Analysis**
+```sql
+-- Identify suspicious network connections
+SELECT 
+    p.name,
+    p.path,
+    p.cmdline,
+    ps.local_address,
+    ps.local_port,
+    ps.remote_address,
+    ps.remote_port,
+    ps.state,
+    u.username
+FROM process_open_sockets ps
+JOIN processes p ON ps.pid = p.pid
+LEFT JOIN users u ON p.uid = u.uid
+WHERE 
+    -- Focus on suspicious connections
+    (ps.remote_port IN (4444, 5555, 6666, 7777, 8080, 8888, 9999)
+     OR ps.remote_address NOT LIKE '192.168.%'
+     AND ps.remote_address NOT LIKE '10.%'
+     AND ps.remote_address NOT LIKE '172.16.%'
+     AND ps.remote_address NOT LIKE '127.%')
+    -- Exclude common legitimate services
+    AND p.name NOT IN ('chrome.exe', 'firefox.exe', 'outlook.exe')
+ORDER BY ps.remote_port, ps.remote_address;
+```
+
+### **Persistence Mechanism Detection**
+```sql
+-- Comprehensive persistence mechanism analysis
+SELECT 
+    'Registry Autorun' AS persistence_type,
+    r.key,
+    r.name,
+    r.data AS value,
+    '' AS file_path,
+    r.mtime
+FROM registry r
+WHERE r.key LIKE 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run%'
+   OR r.key LIKE 'HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run%'
+
+UNION ALL
+
+SELECT 
+    'Scheduled Task' AS persistence_type,
+    st.name AS key,
+    st.action AS name,
+    st.path AS value,
+    st.path AS file_path,
+    datetime(st.last_run_time, 'unixepoch') AS mtime
+FROM scheduled_tasks st
+WHERE st.enabled = 1
+  AND st.hidden = 0
+
+UNION ALL
+
+SELECT 
+    'Startup File' AS persistence_type,
+    sf.path AS key,
+    sf.name AS name,
+    sf.path AS value,
+    sf.path AS file_path,
+    datetime(sf.mtime, 'unixepoch') AS mtime
+FROM startup_items sf
+
+ORDER BY mtime DESC;
+```
+
+## Best Practices
+
+### **Effective Query Requests**
+- **Investigation Context**: Describe the security incident or investigation scope
+- **System Environment**: Specify target operating systems and deployment scale
+- **Performance Requirements**: Mention resource constraints and query frequency
+- **Data Requirements**: Detail specific information needed for analysis
+
+### **Query Deployment**
+- **Test Environment**: Validate queries in controlled environments before production
+- **Performance Testing**: Monitor query resource usage and execution time
+- **Baseline Establishment**: Understand normal system activity before anomaly detection
+- **Incremental Deployment**: Roll out queries gradually to assess impact
+
+### **Quality Assurance**
+- **Data Validation**: Verify query results against known system state
+- **False Positive Analysis**: Test queries against benign system activity
+- **Cross-Platform Testing**: Validate queries across different operating system versions
+- **Documentation Review**: Ensure query documentation is clear and complete
+
+## Platform Integration
+
+### **OSQuery Ecosystem**
+- **Fleet Management**: Integration with osquery fleet management platforms
+- **Log Forwarding**: SIEM integration and centralized log collection
+- **Real-Time Monitoring**: Event-driven detection and alerting systems
+- **Compliance Frameworks**: Configuration management and audit reporting
+
+### **Security Tool Integration**
+- **SIEM Platforms**: Query result integration with security information systems
+- **EDR Solutions**: Endpoint detection and response platform correlation
+- **Threat Intelligence**: IOC validation and threat attribution workflows
+- **Incident Response**: Investigation workflow integration and evidence collection
+
+## Advanced Features
+
+### **Advanced Analytics**
+- **Behavioral Baselines**: Normal activity pattern establishment and deviation detection
+- **Statistical Analysis**: Anomaly detection using statistical methods
+- **Time Series Analysis**: Temporal pattern recognition and trend analysis
+- **Correlation Analysis**: Multi-endpoint event correlation and attack reconstruction
+
+### **Automation Capabilities**
+- **Scheduled Queries**: Automated recurring investigation and monitoring
+- **Event-Driven Execution**: Trigger-based query execution and response
+- **Response Orchestration**: Automated containment and remediation workflows
+- **Threat Intelligence Integration**: Automated IOC validation and enrichment
+
+## Performance Optimization
+
+### **Query Efficiency**
+- **Index Utilization**: Queries optimized for osquery table indexing
+- **Resource Management**: CPU and memory efficient query construction
+- **Execution Planning**: Optimal query structure and join operations
+- **Caching Strategies**: Effective use of osquery result caching
+
+### **Scalability Considerations**
+- **Distributed Deployment**: Queries designed for large-scale endpoint environments
+- **Network Optimization**: Efficient result transmission and bandwidth usage
+- **Storage Optimization**: Minimal local storage requirements and log rotation
+- **Central Management**: Scalable query distribution and result collection
+
+## Investigation Workflows
+
+### **Incident Response Integration**
+- **Evidence Collection**: Comprehensive forensic data gathering queries
+- **Timeline Reconstruction**: Temporal analysis and event sequencing
+- **Impact Assessment**: System modification analysis and damage evaluation
+- **Containment Verification**: Isolation confirmation and remediation tracking
+
+### **Proactive Threat Hunting**
+- **Hypothesis Testing**: Queries supporting specific threat hunting hypotheses
+- **Indicator Validation**: IOC verification and threat confirmation
+- **Pattern Recognition**: Subtle attack pattern identification
+- **Campaign Tracking**: Multi-endpoint attack correlation and attribution
+
+## Getting Help
+
+### **Query Development Support**
+- **Investigation Strategy**: Assistance with investigation planning and approach
+- **Query Optimization**: Performance tuning and efficiency improvement
+- **Cross-Platform Compatibility**: Query adaptation for different operating systems
+- **Integration Guidance**: Best practices for osquery deployment and management
+
+### **Expert Consultation**
+- **Advanced Investigations**: Complex incident response and forensic analysis
+- **Custom Environments**: Queries tailored for specialized infrastructure
+- **Performance Issues**: Optimization for resource-constrained environments
+- **Compliance Requirements**: Queries meeting regulatory and audit standards
+
+---
+
+**Ready to Generate OSQuery Queries?** Access the OSQuery Agent by using `@osquery` mentions in your conversations, or describe your endpoint investigation needs to get started with professional-grade OSQuery query generation. 

@@ -1,0 +1,258 @@
+---
+title: "Team Routing"
+description: "Intelligent team selection, activation, and coordination for complex cybersecurity investigations"
+---
+
+# Team Routing System
+
+The Team Routing System in Binalyze Fleet AI manages the intelligent selection, activation, and coordination of specialized agent teams based on investigation complexity, scope, and requirements. This sophisticated routing mechanism ensures that cybersecurity investigations receive the optimal combination of specialized expertise and coordinated workflows.
+
+## Team Selection Logic
+
+### **Routing Decision Framework**
+The system analyzes multiple factors to determine optimal team activation:
+
+**Investigation Complexity Assessment**:
+- **Single-Domain vs. Multi-Domain**: Simple queries route to individual agents, complex investigations activate teams
+- **Scope Analysis**: Breadth of investigation requirements determines team composition needs
+- **Expertise Requirements**: Multiple specialized skills trigger team-based coordination
+- **Resource Intensity**: High-complexity investigations benefit from team-based parallel processing
+
+**Team Activation Triggers**:
+- **Comprehensive Detection Requests**: Need for YARA + Sigma + OSQuery coordination
+- **Multi-Phase Investigations**: Complex workflows requiring orchestrated agent sequences
+- **Cross-Platform Analysis**: Investigations spanning multiple security domains simultaneously
+- **Enterprise-Scale Deployments**: Large-scope implementations requiring coordinated execution
+
+### **Available Team Configurations**
+
+#### **Detection Team**
+**Activation Criteria**:
+- Requests for comprehensive threat detection across multiple vectors
+- Need for coordinated rule generation (YARA + Sigma + OSQuery)
+- APT campaign analysis requiring multi-layered detection
+- Malware family detection with file, log, and endpoint coverage
+
+**Team Composition**:
+- **YARA Agent**: File-based malware detection and memory forensics
+- **Sigma Agent**: Log-based behavioral detection and SIEM integration
+- **OSQuery Agent**: Endpoint telemetry and system investigation
+- **Detection Coordinator**: Workflow orchestration and result integration
+
+#### **Blacklight Team**
+**Activation Criteria**:
+- Complex multi-domain investigations requiring central orchestration
+- Need for sophisticated conversation state management
+- Collaborative investigations involving multiple team members
+- Enterprise integration requirements with external systems
+
+**Team Composition**:
+- **Primary Orchestrator**: Main conversation management and workflow coordination
+- **Agent Coordinator**: Specialized agent management and routing
+- **Context Manager**: Investigation state and history management
+- **Integration Layer**: External system and platform coordination
+
+## Team Routing Examples
+
+### **Automatic Detection Team Activation**
+```
+User Query: "I need complete detection coverage for Lazarus Group campaigns 
+including file signatures, behavioral detection in logs, and endpoint monitoring."
+
+Routing Analysis:
+├── Complexity Assessment: High (multiple detection domains)
+├── Scope Analysis: Comprehensive (file + log + endpoint)
+├── Expertise Requirements: Multi-agent coordination needed
+└── Resource Requirements: Parallel processing beneficial
+
+Routing Decision: → Detection Team Activation
+Team Configuration:
+├── YARA Agent: Lazarus malware family signatures and memory patterns
+├── Sigma Agent: APT behavioral detection and lateral movement patterns
+├── OSQuery Agent: Endpoint persistence and C2 communication detection
+└── Detection Coordinator: Unified deployment strategy and correlation
+```
+
+### **Blacklight Team Orchestration**
+```
+User Query: "Coordinate investigation of advanced persistent threat targeting 
+our financial systems with file analysis, log correlation, endpoint investigation, 
+and compliance documentation."
+
+Routing Analysis:
+├── Investigation Type: Complex multi-phase investigation
+├── Coordination Needs: High (multiple specialized agents required)
+├── State Management: Complex (extended investigation with multiple phases)
+└── Documentation Requirements: Comprehensive reporting and compliance
+
+Routing Decision: → Blacklight Team Activation
+Orchestration Plan:
+├── Investigation Planning Phase (Fleet Agent coordination)
+├── Parallel Analysis Phase (Detection Team activation)
+├── Integration Phase (Cross-agent result correlation)
+└── Documentation Phase (Compliance and reporting coordination)
+```
+
+## Inter-Team Communication
+
+### **Context Sharing Protocols**
+Teams maintain shared understanding through sophisticated context sharing:
+
+**Investigation State Synchronization**:
+- **Shared Memory Architecture**: Common investigation context accessible to all team members
+- **Real-Time Updates**: Immediate propagation of investigation findings across team
+- **Version Control**: Maintaining investigation history and decision audit trails
+- **Conflict Resolution**: Handling contradictory findings or agent disagreements
+
+**Cross-Team Coordination**:
+- **Handoff Procedures**: Smooth transitions between different team configurations
+- **Resource Sharing**: Shared access to investigation artifacts and generated content
+- **Progress Synchronization**: Coordinated progress tracking across multiple investigation streams
+- **Quality Assurance**: Cross-team validation of investigation findings and recommendations
+
+### **Communication Patterns**
+Different communication patterns optimize team effectiveness:
+
+**Hierarchical Communication**:
+- **Team Leader Coordination**: Central coordination through designated team leader
+- **Specialist Consultation**: Direct access to specialized expertise when needed
+- **Escalation Pathways**: Clear escalation routes for complex investigation challenges
+- **Decision Authority**: Defined decision-making authority and responsibility
+
+**Peer-to-Peer Communication**:
+- **Direct Agent Interaction**: Specialized agents communicating directly for efficiency
+- **Collaborative Analysis**: Joint analysis and consensus-building among team members
+- **Resource Negotiation**: Direct coordination of computational and analytical resources
+- **Knowledge Sharing**: Peer-to-peer transfer of specialized knowledge and techniques
+
+## Team-Specific Configurations
+
+### **Detection Team Configuration**
+Specialized coordination for comprehensive threat detection:
+
+**Coordination Patterns**:
+- **Parallel Analysis**: Simultaneous rule generation across all detection domains
+- **Cross-Validation**: Verification of detection effectiveness across agent results
+- **Integration Testing**: Coordinated testing of multi-agent detection deployments
+- **Performance Optimization**: Balanced optimization across all detection platforms
+
+**Communication Protocols**:
+- **Rule Synchronization**: Coordinated timing of detection rule deployments
+- **Threat Intelligence Sharing**: Real-time sharing of threat indicators across agents
+- **False Positive Coordination**: Unified approach to false positive reduction
+- **Effectiveness Metrics**: Shared measurement of detection accuracy and performance
+
+### **Blacklight Team Configuration**
+Sophisticated orchestration for complex investigations:
+
+**Orchestration Patterns**:
+- **Investigation Workflow Management**: Structured progression through investigation phases
+- **Resource Allocation**: Intelligent assignment of specialized agents to investigation tasks
+- **Context Preservation**: Comprehensive maintenance of investigation state and history
+- **Result Integration**: Unified analysis combining insights from multiple investigation streams
+
+**State Management**:
+- **Investigation Branching**: Managing multiple investigation hypotheses simultaneously
+- **Timeline Coordination**: Synchronized timeline management across investigation streams
+- **Evidence Correlation**: Cross-stream evidence correlation and validation
+- **Documentation Coordination**: Unified documentation and reporting across investigation components
+
+## Escalation and Fallback Mechanisms
+
+### **Automatic Escalation Triggers**
+The system automatically escalates investigations when appropriate:
+
+**Complexity Thresholds**:
+- **Investigation Scope Expansion**: Automatic team activation when investigation scope increases
+- **Resource Limitations**: Escalation when single-agent capabilities are insufficient
+- **Quality Requirements**: Team activation for high-stakes investigations requiring validation
+- **Time Constraints**: Parallel processing activation for time-critical investigations
+
+**Escalation Pathways**:
+- **Agent-to-Team**: Individual agent requests for team support and coordination
+- **Team-to-Enterprise**: Team escalation to enterprise support and consultation
+- **Automatic-to-Manual**: Escalation to human expert intervention when needed
+- **Internal-to-External**: Escalation to external expert consultation and resources
+
+### **Fallback Strategies**
+Robust fallback mechanisms ensure investigation continuity:
+
+**Team Unavailability**:
+- **Agent Redistribution**: Reallocation of investigation tasks to available agents
+- **Simplified Workflows**: Fallback to simpler investigation approaches when teams unavailable
+- **Queue Management**: Intelligent queuing of team-requiring investigations
+- **Priority Escalation**: Expedited team activation for critical investigations
+
+**Resource Constraints**:
+- **Load Balancing**: Dynamic distribution of investigation workload across available resources
+- **Prioritization**: Intelligent prioritization of investigations based on criticality and impact
+- **Resource Scheduling**: Optimized scheduling of resource-intensive team operations
+- **Degraded Mode Operation**: Continued operation with reduced team capabilities when necessary
+
+## Performance Optimization
+
+### **Team Efficiency Metrics**
+Continuous monitoring and optimization of team performance:
+
+**Performance Indicators**:
+- **Investigation Completion Time**: Measurement of team investigation efficiency
+- **Result Quality**: Assessment of investigation accuracy and completeness
+- **Resource Utilization**: Monitoring of computational and agent resource usage
+- **User Satisfaction**: Feedback-based measurement of team effectiveness
+
+**Optimization Strategies**:
+- **Workflow Refinement**: Continuous improvement of team coordination patterns
+- **Resource Allocation**: Optimization of agent assignment and resource distribution
+- **Communication Efficiency**: Improvement of inter-team communication protocols
+- **Learning Integration**: Incorporation of investigation outcomes into team optimization
+
+### **Adaptive Team Management**
+Dynamic adjustment of team configurations based on performance and requirements:
+
+**Configuration Learning**:
+- **Success Pattern Recognition**: Identification of successful team configuration patterns
+- **Failure Analysis**: Analysis of team coordination failures and optimization opportunities
+- **Workload Prediction**: Predictive modeling of team resource requirements
+- **Capability Evolution**: Adaptation of team capabilities based on investigation evolution
+
+**Dynamic Optimization**:
+- **Real-Time Adjustment**: Dynamic modification of team configurations during investigations
+- **Load Balancing**: Intelligent distribution of investigation workload across teams
+- **Capacity Planning**: Proactive planning for team resource requirements and scaling
+- **Quality Assurance**: Continuous monitoring and optimization of team investigation quality
+
+## Best Practices for Team Routing
+
+### **Effective Team Utilization**
+Maximize the benefits of team-based investigations:
+
+**Request Optimization**:
+- **Clear Scope Definition**: Provide comprehensive investigation scope and requirements
+- **Priority Indication**: Specify investigation priority and time constraints
+- **Resource Awareness**: Understand team resource requirements and implications
+- **Outcome Expectations**: Clear definition of expected investigation outcomes and deliverables
+
+**Collaboration Practices**:
+- **Team Communication**: Effective communication with team-based investigation workflows
+- **Progress Monitoring**: Active monitoring of team investigation progress and status
+- **Feedback Provision**: Constructive feedback on team performance and investigation quality
+- **Continuous Learning**: Learning from team investigation outcomes and best practices
+
+### **Team Coordination**
+Effective coordination with team-based investigations:
+
+**Investigation Planning**:
+- **Comprehensive Requirements**: Thorough definition of investigation requirements and scope
+- **Team Composition**: Understanding optimal team composition for investigation needs
+- **Resource Planning**: Appropriate planning for team investigation resource requirements
+- **Timeline Management**: Realistic timeline expectations for team-based investigations
+
+**Result Integration**:
+- **Multi-Stream Analysis**: Effective integration of multiple investigation streams and findings
+- **Quality Validation**: Thorough validation of team investigation results and recommendations
+- **Documentation Coordination**: Comprehensive documentation of team investigation processes and outcomes
+- **Implementation Planning**: Strategic planning for implementing team investigation recommendations
+
+---
+
+**Understanding Team Routing**: The team routing system is designed to provide optimal investigation support through intelligent team selection and coordination. Trust the system's routing decisions while understanding that you can always request specific team configurations when you have particular requirements or preferences. 

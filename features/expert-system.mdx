@@ -1,0 +1,323 @@
+---
+title: "Expert System"
+description: "Intelligent routing to specialized AI agents based on cybersecurity expertise requirements"
+---
+
+# Expert System
+
+The Expert System in Binalyze Fleet AI provides intelligent routing to specialized agents based on the expertise required for your cybersecurity challenges. This sophisticated system ensures that every query receives attention from the most qualified AI agent, whether through explicit expert mentions or automatic expertise detection.
+
+## How the Expert System Works
+
+### **Expert Mentions**
+Direct access to specialized agents using simple @ syntax:
+
+- **@yara**: Direct routing to YARA Agent for malware detection rules
+- **@sigma**: Access Sigma Agent for log-based detection rules
+- **@osquery**: Connect with OSQuery Agent for endpoint queries
+- **@fleet**: General Fleet Agent for DFIR guidance and coordination
+
+### **Automatic Expertise Detection**
+Intelligent analysis of query content to route to appropriate experts:
+
+- **Content Analysis**: Technical keywords and cybersecurity domain identification
+- **Intent Recognition**: Understanding the type of assistance being requested
+- **Context Awareness**: Consideration of ongoing investigation requirements
+- **Optimal Matching**: Selection of the most qualified agent for the specific need
+
+## Expert Agent Specializations
+
+### **YARA Expert (@yara)**
+Specialized in malware detection and file analysis:
+
+**Core Expertise**:
+- **Malware Family Detection**: Rules for specific malware families and variants
+- **File Format Analysis**: PE, ELF, and document-based threat detection
+- **Memory Forensics**: Pattern matching in memory dumps and runtime analysis
+- **Behavioral Signatures**: Detection based on malware behavior patterns
+- **Evasion Techniques**: Anti-analysis and obfuscation detection
+
+**When to Use**:
+- Creating malware detection rules
+- Analyzing suspicious files or executables
+- Memory forensics and runtime analysis
+- Pattern matching for threat families
+- Binary analysis and reverse engineering guidance
+
+**Example Expert Usage**:
+```
+"@yara Create a rule to detect Emotet banking trojan variants"
+"@yara Help me analyze this suspicious PowerShell dropper"
+"@yara Generate memory signatures for process injection detection"
+```
+
+### **Sigma Expert (@sigma)**
+Specialized in log analysis and behavioral detection:
+
+**Core Expertise**:
+- **SIEM Integration**: Rules optimized for various SIEM platforms
+- **Behavioral Detection**: Attack technique identification in log data
+- **Multi-Platform Coverage**: Windows, Linux, macOS, and cloud platform logs
+- **Threat Hunting**: Proactive threat detection query development
+- **Compliance Monitoring**: Regulatory and audit requirement detection
+
+**When to Use**:
+- Creating log-based detection rules
+- SIEM query development and optimization
+- Behavioral threat detection across platforms
+- Threat hunting query generation
+- Compliance and audit log monitoring
+
+**Example Expert Usage**:
+```
+"@sigma Detect lateral movement using administrative shares"
+"@sigma Create rules for PowerShell attack detection in Splunk"
+"@sigma Generate threat hunting queries for data exfiltration"
+```
+
+### **OSQuery Expert (@osquery)**
+Specialized in endpoint investigation and system analysis:
+
+**Core Expertise**:
+- **Cross-Platform Investigation**: Windows, macOS, and Linux endpoint analysis
+- **System Monitoring**: Real-time endpoint surveillance and alerting
+- **Incident Response**: Rapid investigation and evidence collection
+- **Compliance Auditing**: Configuration verification and posture assessment
+- **Threat Hunting**: Proactive endpoint-based threat detection
+
+**When to Use**:
+- Endpoint investigation and evidence collection
+- System configuration analysis and monitoring
+- Compliance verification and auditing
+- Cross-platform security queries
+- Real-time endpoint surveillance
+
+**Example Expert Usage**:
+```
+"@osquery Find persistence mechanisms on Windows endpoints"
+"@osquery Monitor for cryptocurrency mining activity"
+"@osquery Investigate suspicious network connections"
+```
+
+### **Fleet Expert (@fleet)**
+General cybersecurity guidance and coordination:
+
+**Core Expertise**:
+- **DFIR Strategy**: Investigation planning and methodology guidance
+- **Threat Analysis**: Comprehensive threat landscape analysis
+- **Multi-Domain Coordination**: Integration across cybersecurity domains
+- **Best Practices**: Industry-standard procedures and frameworks
+- **Investigation Management**: End-to-end investigation workflow coordination
+
+**When to Use**:
+- General cybersecurity guidance and strategy
+- Investigation planning and methodology
+- Multi-domain analysis coordination
+- Threat landscape assessment
+- Integration of multiple cybersecurity disciplines
+
+**Example Expert Usage**:
+```
+"@fleet Plan investigation strategy for APT campaign"
+"@fleet Analyze threat intelligence for emerging malware family"
+"@fleet Coordinate incident response across multiple domains"
+```
+
+## Intelligent Routing Mechanisms
+
+### **Keyword-Based Routing**
+Automatic routing based on technical terminology:
+
+**YARA Agent Triggers**:
+- Malware, virus, trojan, ransomware, backdoor
+- PE, ELF, binary, executable, file analysis
+- Memory, dump, injection, hollowing
+- Pattern, signature, family, variant
+- Obfuscation, packing, crypter
+
+**Sigma Agent Triggers**:
+- Log, SIEM, event, audit, behavioral
+- Splunk, Elastic, QRadar, Sentinel
+- Windows Event, syslog, CloudTrail
+- Lateral movement, privilege escalation
+- Threat hunting, anomaly detection
+
+**OSQuery Agent Triggers**:
+- Endpoint, system, process, registry
+- Investigation, forensics, evidence
+- Monitoring, surveillance, compliance
+- Configuration, posture, baseline
+- Cross-platform, multi-OS
+
+**Fleet Agent Triggers**:
+- Strategy, planning, methodology
+- DFIR, incident response, investigation
+- Threat analysis, intelligence, landscape
+- Coordination, integration, workflow
+- Best practices, framework, guidance
+
+### **Context-Aware Routing**
+Intelligent routing based on conversation context:
+
+**Investigation Phase Detection**:
+- **Initial Assessment**: Route to Fleet Agent for strategy and planning
+- **Technical Analysis**: Route to specialized agents based on analysis type
+- **Evidence Collection**: Route to OSQuery Agent for endpoint data gathering
+- **Rule Development**: Route to YARA/Sigma agents for detection rule creation
+- **Integration**: Route back to Fleet Agent for coordination and implementation
+
+**Complexity Assessment**:
+- **Simple Queries**: Direct routing to appropriate specialized agent
+- **Complex Investigations**: Team activation with multiple agents
+- **Multi-Domain Requirements**: Blacklight Team orchestration
+- **Enterprise Deployment**: Detection Team coordination
+
+## Expert System Benefits
+
+### **Optimal Expertise Matching**
+Ensure every query receives attention from the most qualified expert:
+
+**Specialized Knowledge**:
+- **Domain Expertise**: Deep knowledge in specific cybersecurity domains
+- **Technical Proficiency**: Advanced understanding of tools and techniques
+- **Current Intelligence**: Up-to-date knowledge of threat landscape
+- **Best Practices**: Industry-standard procedures and methodologies
+
+**Efficiency Optimization**:
+- **Faster Responses**: Direct routing eliminates unnecessary routing overhead
+- **Higher Accuracy**: Specialized expertise produces more accurate results
+- **Reduced Iteration**: Optimal initial routing reduces need for re-routing
+- **Resource Optimization**: Efficient utilization of specialized agent capabilities
+
+### **Seamless User Experience**
+Provide intuitive access to specialized expertise:
+
+**Simple Interface**:
+- **Natural Language**: Describe needs in natural cybersecurity language
+- **Expert Mentions**: Simple @ syntax for direct expert access
+- **Automatic Routing**: Intelligent routing without user intervention required
+- **Context Preservation**: Maintained context across expert transitions
+
+**Flexible Interaction**:
+- **Mixed Conversations**: Seamless transitions between different experts
+- **Follow-up Questions**: Natural progression through investigation phases
+- **Expert Coordination**: Multiple experts working collaboratively
+- **User Control**: Ability to request specific experts when needed
+
+## Advanced Expert Features
+
+### **Multi-Expert Collaboration**
+Coordinate multiple experts for complex investigations:
+
+**Collaborative Analysis**:
+- **Shared Context**: Common understanding across multiple experts
+- **Complementary Insights**: Different perspectives on the same challenge
+- **Cross-Validation**: Verification of findings across expert domains
+- **Integrated Solutions**: Coordinated solutions spanning multiple domains
+
+**Expert Handoffs**:
+- **Context Transfer**: Seamless transfer of investigation context between experts
+- **Recommendation Chains**: Experts recommending other experts for specific needs
+- **Progressive Specialization**: Moving from general to specialized expertise
+- **Result Integration**: Combining expert outputs into unified solutions
+
+### **Learning and Adaptation**
+Continuous improvement of expert routing and capabilities:
+
+**Routing Optimization**:
+- **Success Metrics**: Measurement of routing effectiveness and user satisfaction
+- **Pattern Recognition**: Identification of successful routing patterns
+- **Feedback Integration**: Incorporation of user feedback into routing decisions
+- **Performance Tuning**: Optimization of routing algorithms and decision criteria
+
+**Expert Enhancement**:
+- **Knowledge Updates**: Regular updates to expert knowledge bases
+- **Capability Expansion**: Addition of new capabilities and specializations
+- **Quality Improvement**: Continuous refinement of expert response quality
+- **Integration Enhancement**: Improved coordination between experts
+
+## Best Practices for Expert System Usage
+
+### **Effective Expert Selection**
+Maximize the benefits of specialized expertise:
+
+**Clear Requirements**:
+- **Specific Needs**: Clearly articulate what type of assistance you need
+- **Technical Context**: Provide relevant technical details and background
+- **Scope Definition**: Define the scope and objectives of your request
+- **Outcome Expectations**: Specify what you hope to achieve
+
+**Expert Mention Strategy**:
+- **Direct Access**: Use @ mentions when you know exactly which expert you need
+- **Trust Routing**: Allow automatic routing when uncertain about optimal expert
+- **Progressive Specialization**: Start general and move to specific as needs become clear
+- **Multi-Expert Planning**: Consider whether multiple experts might be beneficial
+
+### **Multi-Expert Coordination**
+Effectively coordinate multiple experts for complex needs:
+
+**Investigation Planning**:
+- **Expert Sequencing**: Plan optimal sequence of expert consultations
+- **Context Sharing**: Ensure relevant context is shared across experts
+- **Result Integration**: Plan how to integrate outputs from multiple experts
+- **Coordination Strategy**: Consider using Fleet Agent for overall coordination
+
+**Quality Assurance**:
+- **Cross-Validation**: Use multiple experts to validate critical findings
+- **Complementary Analysis**: Leverage different expert perspectives on the same challenge
+- **Consensus Building**: Work toward consensus when experts provide different recommendations
+- **Documentation**: Maintain clear documentation of multi-expert collaboration
+
+## Troubleshooting Expert Routing
+
+### **Unexpected Routing**
+Address situations where routing doesn't match expectations:
+
+**Routing Analysis**:
+- **Query Review**: Review how your query might be interpreted by routing system
+- **Keyword Examination**: Consider which keywords might trigger specific routing
+- **Context Assessment**: Evaluate how conversation context might influence routing
+- **Intent Clarification**: Provide clearer indication of your specific intent
+
+**Correction Strategies**:
+- **Expert Mentions**: Use explicit @ mentions to access desired expert
+- **Query Refinement**: Refine your query to better indicate needed expertise
+- **Context Addition**: Add more specific context about your requirements
+- **Direct Requests**: Directly request routing to specific expert
+
+### **Expert Coordination Issues**
+Resolve challenges with multi-expert coordination:
+
+**Communication Clarity**:
+- **Context Sharing**: Ensure adequate context is shared between experts
+- **Requirement Specification**: Clearly specify requirements for each expert
+- **Integration Planning**: Plan how expert outputs will be integrated
+- **Coordination Strategy**: Use Fleet Agent for complex multi-expert coordination
+
+**Quality Management**:
+- **Result Validation**: Validate expert outputs for accuracy and completeness
+- **Consistency Checking**: Ensure consistency across multiple expert recommendations
+- **Conflict Resolution**: Address disagreements or contradictions between experts
+- **Quality Assurance**: Implement quality assurance processes for multi-expert work
+
+## Getting Help with Expert System
+
+### **Expert Selection Guidance**
+Get assistance with choosing the right expert for your needs:
+
+- **Capability Mapping**: Understanding which expert is best for specific needs
+- **Multi-Expert Strategy**: Planning complex investigations requiring multiple experts
+- **Routing Optimization**: Improving the effectiveness of expert routing
+- **Best Practices**: Learning optimal approaches for expert system usage
+
+### **Advanced Expert Features**
+Access advanced capabilities of the expert system:
+
+- **Custom Routing**: Developing custom routing strategies for specialized needs
+- **Expert Coordination**: Advanced coordination patterns for complex investigations
+- **Integration Strategy**: Strategic planning for expert system integration
+- **Performance Optimization**: Optimizing expert system performance for your environment
+
+---
+
+**Ready to Access Expert Knowledge?** Start by describing your cybersecurity challenge in natural language, or use @ mentions to directly access specific experts. The expert system is designed to connect you with the most qualified AI specialist for your specific needs, ensuring optimal results for your cybersecurity operations. 

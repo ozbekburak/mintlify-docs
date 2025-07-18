@@ -1,0 +1,374 @@
+---
+title: "Authentication"
+description: "Secure authentication and access control for Binalyze Fleet AI platform"
+---
+
+# Authentication and Access Control
+
+Binalyze Fleet AI implements enterprise-grade authentication and access control mechanisms to ensure secure access to cybersecurity AI capabilities. This comprehensive guide covers authentication methods, session management, security controls, and best practices for protecting your cybersecurity operations.
+
+## Authentication Methods
+
+### **JWT (JSON Web Token) Authentication**
+Primary authentication method for secure API access:
+
+**JWT Token Structure**:
+```json
+{
+  "header": {
+    "alg": "RS256",
+    "typ": "JWT",
+    "kid": "fleet-ai-key-1"
+  },
+  "payload": {
+    "sub": "user@company.com",
+    "iss": "fleet.binalyze.com",
+    "aud": "fleet-ai-api",
+    "exp": 1735689600,
+    "iat": 1735603200,
+    "roles": ["security-analyst", "incident-responder"],
+    "permissions": ["yara:generate", "sigma:create", "osquery:execute"],
+    "organization": "company-org-id",
+    "session_id": "sess_abc123def456"
+  },
+  "signature": "[RS256 Signature]"
+}
+```
+
+**Token Components**:
+- **Subject (sub)**: User identifier (email or username)
+- **Issuer (iss)**: Fleet AI authentication service
+- **Audience (aud)**: Target service for token usage
+- **Expiration (exp)**: Token expiration timestamp
+- **Issued At (iat)**: Token creation timestamp
+- **Roles**: User roles within the organization
+- **Permissions**: Specific permissions for Fleet AI features
+- **Organization**: Organization identifier for multi-tenant support
+- **Session ID**: Unique session identifier for tracking
+
+### **Single Sign-On (SSO) Integration**
+Enterprise SSO integration for seamless authentication:
+
+**Supported SSO Providers**:
+- **SAML 2.0**: Industry-standard SAML authentication
+- **OAuth 2.0/OpenID Connect**: Modern OAuth-based authentication
+- **Active Directory**: Microsoft Active Directory integration
+- **Azure AD**: Microsoft Azure Active Directory
+- **Google Workspace**: Google enterprise authentication
+- **Okta**: Okta identity platform integration
+- **Ping Identity**: PingFederate and PingOne integration
+
+**SSO Configuration Process**:
+1. **Identity Provider Setup**: Configure your identity provider for Fleet AI
+2. **Attribute Mapping**: Map user attributes to Fleet AI roles and permissions
+3. **Certificate Exchange**: Exchange SSL certificates for secure communication
+4. **Testing and Validation**: Test SSO integration with test users
+5. **Production Deployment**: Deploy SSO integration to production environment
+
+### **Multi-Factor Authentication (MFA)**
+Additional security layer for sensitive cybersecurity operations:
+
+**Supported MFA Methods**:
+- **TOTP (Time-based OTP)**: Google Authenticator, Authy, Microsoft Authenticator
+- **SMS/Voice**: Phone-based verification codes
+- **Email**: Email-based verification codes
+- **Hardware Tokens**: FIDO2/WebAuthn compatible security keys
+- **Biometric**: Fingerprint and facial recognition (when supported by client)
+
+**MFA Enforcement Policies**:
+- **Always Required**: MFA required for all authentication attempts
+- **Risk-Based**: MFA required based on risk assessment (location, device, behavior)
+- **Role-Based**: MFA required for specific roles or permissions
+- **Time-Based**: MFA required after specified time periods
+- **Administrative Override**: Emergency access procedures with additional verification
+
+## Session Management
+
+### **Session Security**
+Secure session management for continuous protection:
+
+**Session Characteristics**:
+- **Secure Cookies**: HttpOnly, Secure, and SameSite cookie attributes
+- **Session Encryption**: AES-256 encryption for session data
+- **Session Rotation**: Automatic session ID rotation on privilege escalation
+- **Concurrent Session Limits**: Configurable limits on concurrent user sessions
+- **Session Monitoring**: Real-time monitoring of session activity and anomalies
+
+**Session Lifecycle Management**:
+1. **Session Creation**: Secure session establishment upon authentication
+2. **Session Validation**: Continuous validation of session integrity
+3. **Session Renewal**: Automatic renewal before expiration
+4. **Session Termination**: Secure session cleanup on logout or timeout
+5. **Session Recovery**: Graceful recovery from interrupted sessions
+
+### **Session Configuration**
+Configurable session parameters for organizational requirements:
+
+**Timeout Settings**:
+```yaml
+session_config:
+  idle_timeout: 3600  # 1 hour of inactivity
+  absolute_timeout: 28800  # 8 hours maximum session
+  renewal_threshold: 900  # Renew if < 15 minutes remaining
+  warning_time: 300  # Warn user 5 minutes before timeout
+  grace_period: 60  # 1 minute grace period after warning
+```
+
+**Security Parameters**:
+```yaml
+security_config:
+  session_encryption: AES-256-GCM
+  session_signing: HMAC-SHA256
+  csrf_protection: enabled
+  secure_headers: enforced
+  ip_binding: optional  # Bind session to IP address
+  device_fingerprinting: enabled
+```
+
+## Access Control and Permissions
+
+### **Role-Based Access Control (RBAC)**
+Granular permissions for different cybersecurity roles:
+
+**Predefined Roles**:
+
+**Security Analyst**:
+- Read access to all AI agents and generated content
+- Generate YARA, Sigma, and OSQuery rules
+- Access conversation history and search capabilities
+- Participate in shared investigations
+
+**Incident Responder**:
+- Full access to all AI agents and teams
+- Emergency investigation capabilities
+- Cross-team collaboration and coordination
+- Escalation and notification permissions
+
+**SOC Manager**:
+- Administrative access to team configurations
+- User management and permission assignment
+- Usage analytics and reporting access
+- Audit log access and compliance reporting
+
+**Security Engineer**:
+- Full access to detection rule generation
+- Performance tuning and optimization access
+- Integration configuration and management
+- Custom workflow development permissions
+
+**CISO/Security Executive**:
+- High-level analytics and reporting access
+- Strategic planning and assessment capabilities
+- Compliance and audit reporting
+- Executive summary and briefing access
+
+### **Permission Granularity**
+Fine-grained permissions for specific capabilities:
+
+**Agent-Specific Permissions**:
+```yaml
+agent_permissions:
+  yara:
+    - "yara:read"        # View YARA rules and analysis
+    - "yara:generate"    # Generate new YARA rules
+    - "yara:modify"      # Edit and refine YARA rules
+    - "yara:deploy"      # Deploy rules to security infrastructure
+  
+  sigma:
+    - "sigma:read"       # View Sigma rules and analysis
+    - "sigma:generate"   # Generate new Sigma rules
+    - "sigma:platform"   # Platform-specific optimizations
+    - "sigma:deploy"     # Deploy rules to SIEM platforms
+  
+  osquery:
+    - "osquery:read"     # View OSQuery queries and results
+    - "osquery:generate" # Generate new OSQuery queries
+    - "osquery:execute"  # Execute queries on endpoints
+    - "osquery:schedule" # Schedule recurring queries
+```
+
+**Administrative Permissions**:
+```yaml
+admin_permissions:
+  user_management:
+    - "users:create"     # Create new user accounts
+    - "users:modify"     # Modify user roles and permissions
+    - "users:delete"     # Delete user accounts
+    - "users:view"       # View user information and activity
+  
+  system_management:
+    - "config:modify"    # Modify system configuration
+    - "logs:access"      # Access system and audit logs
+    - "metrics:view"     # View system metrics and analytics
+    - "backup:manage"    # Manage system backups and recovery
+```
+
+## Security Features
+
+### **Network Security**
+Comprehensive network-level security controls:
+
+**Transport Security**:
+- **TLS 1.3**: Mandatory TLS 1.3 for all communications
+- **Certificate Pinning**: Certificate pinning for additional security
+- **HSTS**: HTTP Strict Transport Security enforcement
+- **Perfect Forward Secrecy**: Ephemeral key exchange for session security
+
+**Network Access Controls**:
+- **IP Allowlisting**: Restrict access to specific IP ranges
+- **Geographic Restrictions**: Block or allow access from specific countries
+- **VPN Requirements**: Require VPN connection for external access
+- **Network Segmentation**: Integration with network segmentation policies
+
+### **Application Security**
+Application-level security controls and protections:
+
+**Input Validation**:
+- **Query Sanitization**: Sanitization of user input and queries
+- **Parameter Validation**: Strict validation of API parameters
+- **Content Filtering**: Filtering of potentially malicious content
+- **Rate Limiting**: Protection against abuse and DoS attacks
+
+**Output Security**:
+- **Response Sanitization**: Sanitization of AI-generated content
+- **Data Loss Prevention**: Prevention of sensitive data exposure
+- **Content Classification**: Automatic classification of generated content
+- **Watermarking**: Optional watermarking of generated rules and queries
+
+### **Audit and Compliance**
+Comprehensive auditing and compliance capabilities:
+
+**Audit Logging**:
+- **Authentication Events**: All login, logout, and authentication failures
+- **Authorization Events**: Permission grants, denials, and escalations
+- **Data Access**: All access to conversations, rules, and generated content
+- **Administrative Actions**: All administrative and configuration changes
+- **System Events**: System startup, shutdown, and error conditions
+
+**Compliance Reporting**:
+- **Access Reports**: User access patterns and permission usage
+- **Activity Reports**: System usage and performance metrics
+- **Security Reports**: Security events and incident summaries
+- **Compliance Reports**: Regulatory compliance status and evidence
+
+## Implementation Guide
+
+### **Basic Authentication Setup**
+Step-by-step implementation for basic authentication:
+
+**Phase 1: JWT Configuration**
+1. **Certificate Generation**: Generate RSA or ECDSA key pairs for JWT signing
+2. **Issuer Configuration**: Configure JWT issuer and audience parameters
+3. **Token Validation**: Implement token validation and verification logic
+4. **Expiration Management**: Configure token expiration and renewal policies
+5. **Testing**: Test JWT authentication with various scenarios
+
+**Phase 2: User Management**
+1. **User Database**: Set up user database with roles and permissions
+2. **Registration Process**: Implement user registration and approval workflow
+3. **Role Assignment**: Configure default roles and permission assignments
+4. **Access Reviews**: Implement periodic access reviews and certifications
+5. **User Training**: Train users on authentication procedures and security
+
+### **Enterprise SSO Integration**
+Advanced implementation for enterprise environments:
+
+**Phase 1: SSO Provider Configuration**
+1. **Provider Assessment**: Evaluate and select appropriate SSO provider
+2. **Integration Planning**: Plan SSO integration architecture and requirements
+3. **Certificate Management**: Set up certificate exchange and management
+4. **Attribute Mapping**: Configure user attribute and role mapping
+5. **Testing Environment**: Set up test environment for SSO validation
+
+**Phase 2: Production Deployment**
+1. **Pilot Deployment**: Deploy SSO to limited user group for validation
+2. **User Migration**: Migrate existing users to SSO authentication
+3. **Monitoring Setup**: Implement SSO monitoring and alerting
+4. **Documentation**: Create user documentation and training materials
+5. **Support Procedures**: Establish support procedures for SSO issues
+
+## Troubleshooting
+
+### **Common Authentication Issues**
+Resolve frequent authentication problems:
+
+**JWT Token Issues**:
+- **Invalid Signature**: Verify JWT signing key and algorithm
+- **Expired Tokens**: Check token expiration and renewal logic
+- **Missing Claims**: Ensure required claims are present in tokens
+- **Audience Mismatch**: Verify audience claim matches expected value
+
+**SSO Integration Issues**:
+- **SAML Assertion Errors**: Validate SAML assertion format and signing
+- **Attribute Mapping**: Verify user attribute mapping configuration
+- **Certificate Issues**: Check certificate validity and trust chains
+- **Clock Skew**: Ensure synchronized clocks between systems
+
+### **Session Management Issues**
+Address session-related problems:
+
+**Session Timeout Issues**:
+- **Premature Timeouts**: Review timeout configuration and user activity
+- **Session Persistence**: Verify session storage and retrieval mechanisms
+- **Concurrent Sessions**: Check concurrent session limits and enforcement
+- **Session Recovery**: Test session recovery after network interruptions
+
+**Permission Issues**:
+- **Access Denied**: Verify user roles and permission assignments
+- **Role Inheritance**: Check role hierarchy and inheritance rules
+- **Permission Caching**: Clear permission caches after role changes
+- **Audit Trail**: Review audit logs for permission-related events
+
+## Best Practices
+
+### **Security Best Practices**
+Implement security best practices for authentication:
+
+**Password Policies**:
+- **Complexity Requirements**: Enforce strong password complexity rules
+- **Password History**: Prevent reuse of recent passwords
+- **Password Rotation**: Require periodic password changes
+- **Account Lockout**: Implement account lockout after failed attempts
+
+**Access Management**:
+- **Principle of Least Privilege**: Grant minimum necessary permissions
+- **Regular Access Reviews**: Conduct periodic access reviews and certifications
+- **Privilege Escalation**: Implement controlled privilege escalation procedures
+- **Emergency Access**: Establish emergency access procedures with additional controls
+
+### **Operational Best Practices**
+Ensure optimal operational management of authentication:
+
+**Monitoring and Alerting**:
+- **Failed Authentication**: Monitor and alert on failed authentication attempts
+- **Unusual Activity**: Detect and alert on unusual access patterns
+- **Privilege Changes**: Monitor and audit privilege escalations and changes
+- **System Health**: Monitor authentication system health and performance
+
+**Backup and Recovery**:
+- **Authentication Data**: Regular backup of authentication data and configuration
+- **Certificate Management**: Backup and secure storage of authentication certificates
+- **Disaster Recovery**: Implement disaster recovery procedures for authentication systems
+- **Business Continuity**: Ensure authentication availability during incidents
+
+## Getting Help
+
+### **Technical Support**
+Access technical support for authentication configuration:
+
+- **Implementation Guidance**: Assistance with authentication implementation
+- **SSO Integration**: Expert help with SSO provider integration
+- **Troubleshooting**: Technical troubleshooting for authentication issues
+- **Security Review**: Security assessment of authentication configuration
+
+### **Compliance Assistance**
+Get help with compliance and regulatory requirements:
+
+- **Regulatory Compliance**: Assistance with regulatory compliance requirements
+- **Audit Preparation**: Help preparing for security audits and assessments
+- **Documentation**: Assistance with compliance documentation and evidence
+- **Best Practices**: Guidance on authentication security best practices
+
+---
+
+**Ready to Implement Secure Authentication?** Contact [support@binalyze.com](mailto:support@binalyze.com) for assistance with authentication configuration and security implementation. Our team can help you design and deploy secure authentication systems that meet your organizational security and compliance requirements. 

@@ -1,0 +1,393 @@
+---
+title: "Incident Response"
+description: "Comprehensive incident response workflows and AI-assisted investigation capabilities"
+---
+
+# Incident Response with Fleet AI
+
+Binalyze Fleet AI transforms incident response operations by providing AI-powered assistance throughout the entire incident lifecycle. From initial detection and triage to containment, eradication, and recovery, Fleet AI accelerates response times while improving investigation quality and outcomes.
+
+## Incident Response Lifecycle
+
+### **Detection and Triage**
+Rapid incident assessment and prioritization:
+
+**Initial Assessment**:
+- **Threat Classification**: AI-assisted classification of incident types and severity
+- **Impact Analysis**: Automated assessment of potential business impact
+- **Priority Assignment**: Intelligent prioritization based on threat landscape and organizational assets
+- **Resource Allocation**: Optimal allocation of response team members and capabilities
+
+**Triage Workflow**:
+```
+Incident Alert → Fleet AI Analysis → Classification → Priority Assignment → Team Assignment
+    ↓
+Initial Response Strategy → Evidence Preservation → Investigation Planning
+```
+
+### **Investigation and Analysis**
+Comprehensive AI-assisted investigation capabilities:
+
+**Multi-Agent Investigation**:
+- **Fleet Agent**: Overall investigation strategy and coordination
+- **YARA Agent**: Malware analysis and signature development
+- **Sigma Agent**: Log analysis and behavioral detection
+- **OSQuery Agent**: Endpoint investigation and evidence collection
+
+**Investigation Workflow Example**:
+```
+User Request: "Investigate suspected APT intrusion with C2 communication detected"
+
+Fleet AI Response:
+├── Initial Assessment (Fleet Agent)
+│   ├── Threat vector analysis and attack timeline
+│   ├── Affected systems identification and scope assessment
+│   └── Investigation strategy and resource planning
+├── Malware Analysis (YARA Agent)
+│   ├── File-based indicators and malware family identification
+│   ├── Memory analysis and runtime behavior patterns
+│   └── Attribution and campaign correlation
+├── Log Analysis (Sigma Agent)
+│   ├── Network communication pattern analysis
+│   ├── Lateral movement detection and timeline reconstruction
+│   └── Persistence mechanism identification
+└── Endpoint Investigation (OSQuery Agent)
+    ├── System compromise assessment and evidence collection
+    ├── Process analysis and execution timeline
+    └── Configuration changes and persistence verification
+```
+
+## Investigation Workflows
+
+### **Malware Incident Response**
+Comprehensive malware investigation and containment:
+
+**Phase 1: Initial Analysis**
+```
+Fleet AI Guidance:
+"I'll help you investigate this malware incident systematically. Let's start with file analysis, 
+then move to behavioral analysis, and finally develop containment strategies."
+
+├── File Analysis (@yara)
+│   ├── Static analysis of suspicious executables
+│   ├── PE structure examination for packing/obfuscation
+│   └── String analysis and configuration extraction
+├── Behavioral Analysis (@sigma)
+│   ├── Process execution patterns in logs
+│   ├── Network communication analysis
+│   └── File system and registry modifications
+└── System Impact (@osquery)
+    ├── Affected systems enumeration
+    ├── Persistence mechanism assessment
+    └── Data access and exfiltration analysis
+```
+
+**Phase 2: Containment and Mitigation**
+- **Isolation Strategy**: AI-recommended isolation procedures for affected systems
+- **Rule Generation**: Rapid generation of detection rules for network and endpoint protection
+- **Remediation Guidance**: Step-by-step remediation procedures and validation methods
+
+### **Network Intrusion Response**
+Systematic investigation of network-based attacks:
+
+**Network Analysis Workflow**:
+```
+Investigation Request: "Analyze suspected network intrusion with lateral movement"
+
+Multi-Agent Response:
+├── Network Traffic Analysis (@sigma)
+│   ├── C2 communication pattern identification
+│   ├── Data exfiltration detection and quantification
+│   └── Lateral movement technique analysis
+├── Endpoint Compromise Assessment (@osquery)
+│   ├── Multi-system compromise verification
+│   ├── Credential theft and usage analysis
+│   └── Persistence mechanism discovery
+├── Attack Timeline Reconstruction (@fleet)
+│   ├── Multi-source timeline correlation
+│   ├── Attack progression mapping
+│   └── Impact assessment and scope determination
+└── Detection Rule Development (@detection-team)
+    ├── Network-based detection rules (Sigma)
+    ├── Endpoint monitoring queries (OSQuery)
+    └── File-based signatures (YARA) if applicable
+```
+
+### **Data Breach Investigation**
+Comprehensive data breach response and impact assessment:
+
+**Breach Assessment Process**:
+1. **Data Identification**: Catalog of potentially compromised data assets
+2. **Access Analysis**: Investigation of unauthorized data access patterns
+3. **Exfiltration Detection**: Analysis of data movement and external transfer
+4. **Impact Quantification**: Assessment of breach scope and affected records
+5. **Regulatory Compliance**: Guidance on regulatory notification requirements
+
+**Example Investigation Flow**:
+```
+"@fleet Help me investigate a potential data breach involving customer PII"
+
+Fleet AI Investigation Plan:
+├── Data Asset Mapping
+│   ├── Identification of PII databases and file stores
+│   ├── Access control analysis and permission review
+│   └── Data classification and sensitivity assessment
+├── Access Pattern Analysis (@osquery)
+│   ├── Unusual database access pattern detection
+│   ├── Privileged account usage analysis
+│   └── File access timeline reconstruction
+├── Network Analysis (@sigma)
+│   ├── Data exfiltration detection and analysis
+│   ├── Unusual outbound traffic identification
+│   └── External communication pattern analysis
+└── Compliance Assessment (@fleet)
+    ├── Regulatory requirement analysis (GDPR, CCPA, etc.)
+    ├── Notification timeline and requirements
+    └── Documentation and evidence preservation
+```
+
+## Timeline Analysis
+
+### **Multi-Source Timeline Reconstruction**
+AI-assisted correlation of events across multiple data sources:
+
+**Timeline Data Sources**:
+- **System Logs**: Windows Event Logs, Syslog, Application Logs
+- **Network Logs**: Firewall logs, Proxy logs, DNS queries, NetFlow data
+- **Endpoint Data**: Process execution, File modifications, Registry changes
+- **Security Tools**: SIEM alerts, EDR events, IDS/IPS logs
+
+**Timeline Analysis Capabilities**:
+```python
+# Example timeline analysis request
+"@fleet Reconstruct attack timeline from initial access to data exfiltration"
+
+Timeline Reconstruction:
+├── T-0: Initial Access
+│   ├── Phishing email delivery and user interaction
+│   ├── Malicious attachment execution
+│   └── Initial system compromise
+├── T+15min: Reconnaissance
+│   ├── System enumeration and discovery
+│   ├── Network mapping and service identification
+│   └── Privilege escalation attempts
+├── T+2hrs: Lateral Movement
+│   ├── Credential theft and reuse
+│   ├── Additional system compromise
+│   └── Domain controller access
+├── T+1day: Persistence
+│   ├── Backdoor installation and configuration
+│   ├── Scheduled task creation
+│   └── Service installation
+└── T+3days: Data Exfiltration
+    ├── Sensitive data identification and collection
+    ├── Data staging and compression
+    └── External transfer via encrypted channels
+```
+
+### **Pattern Recognition and Correlation**
+Advanced pattern recognition for complex attack scenarios:
+
+**Attack Pattern Analysis**:
+- **TTPs Mapping**: Mapping observed activities to MITRE ATT&CK framework
+- **Campaign Attribution**: Correlation with known threat actor campaigns
+- **Tool Identification**: Identification of attack tools and techniques
+- **Behavioral Analysis**: Analysis of attacker behavior patterns and methodologies
+
+## Evidence Collection and Preservation
+
+### **Digital Forensics Integration**
+Seamless integration with digital forensics workflows:
+
+**Evidence Collection Guidance**:
+```
+"@osquery Help me collect forensic evidence for legal proceedings"
+
+Evidence Collection Plan:
+├── System State Preservation
+│   ├── Memory dump collection from affected systems
+│   ├── System image creation for forensic analysis
+│   └── Network connection state preservation
+├── File System Evidence
+│   ├── Suspicious file collection and hashing
+│   ├── Deleted file recovery and analysis
+│   └── Metadata preservation and documentation
+├── Registry and Configuration
+│   ├── Registry hive extraction and analysis
+│   ├── System configuration documentation
+│   └── User profile and activity data
+└── Network Evidence
+    ├── Network traffic capture and analysis
+    ├── DNS query logs and resolution data
+    └── Communication metadata preservation
+```
+
+**Chain of Custody Management**:
+- **Automated Documentation**: Automatic generation of evidence collection documentation
+- **Hash Verification**: Cryptographic verification of evidence integrity
+- **Access Logging**: Complete logging of evidence access and handling
+- **Legal Compliance**: Compliance with legal requirements for evidence handling
+
+### **Automated Evidence Analysis**
+AI-powered analysis of collected digital evidence:
+
+**File Analysis**:
+- **Malware Detection**: Automated malware analysis and family identification
+- **Similarity Analysis**: Comparison with known malicious files and campaigns
+- **Behavior Analysis**: Analysis of file execution behavior and system impact
+- **Attribution Indicators**: Extraction of attribution indicators and metadata
+
+**Memory Analysis**:
+- **Process Analysis**: Analysis of running processes and injected code
+- **Network Connections**: Active network connections and communication patterns
+- **Credential Extraction**: Recovery of cached credentials and authentication tokens
+- **Rootkit Detection**: Detection of hidden processes and system modifications
+
+## Multi-Team Coordination
+
+### **Collaborative Investigation**
+Coordinated investigation across multiple security teams:
+
+**Team Roles and Responsibilities**:
+- **SOC Analysts**: Initial triage and ongoing monitoring
+- **Incident Responders**: Investigation leadership and coordination
+- **Threat Hunters**: Proactive threat hunting and advanced analysis
+- **Forensics Specialists**: Evidence collection and detailed analysis
+- **Management**: Strategic oversight and decision making
+
+**Coordination Workflow**:
+```
+Incident Detection (SOC) → Initial Response (IR Team) → Investigation Planning
+    ↓
+Parallel Analysis:
+├── Technical Analysis (Threat Hunters + Forensics)
+├── Impact Assessment (IR Team + Management)
+└── Containment Actions (SOC + IR Team)
+    ↓
+Results Integration → Decision Making → Recovery Planning
+```
+
+### **Communication and Documentation**
+Streamlined communication and comprehensive documentation:
+
+**Real-Time Collaboration**:
+- **Shared Investigations**: Multiple team members working on same investigation
+- **Progress Tracking**: Real-time visibility into investigation progress
+- **Decision Documentation**: Clear documentation of decisions and rationale
+- **Status Updates**: Automated status updates and progress reporting
+
+**Documentation Automation**:
+- **Investigation Reports**: Automated generation of investigation reports
+- **Timeline Documentation**: Comprehensive timeline documentation with evidence links
+- **Executive Summaries**: High-level summaries for management and stakeholders
+- **Lessons Learned**: Documentation of lessons learned and process improvements
+
+## Response Automation
+
+### **Automated Response Actions**
+AI-driven automation for rapid incident response:
+
+**Containment Automation**:
+- **System Isolation**: Automated isolation of compromised systems
+- **Account Disabling**: Automatic disabling of compromised user accounts
+- **Network Segmentation**: Dynamic network segmentation and traffic blocking
+- **Service Shutdown**: Controlled shutdown of affected services and applications
+
+**Detection Rule Deployment**:
+```
+"@detection-team Deploy comprehensive detection for this APT campaign"
+
+Automated Deployment:
+├── YARA Rules → Endpoint Protection Platforms
+├── Sigma Rules → SIEM Platforms
+├── OSQuery Queries → Endpoint Monitoring Systems
+└── Network Rules → Firewall and IPS Systems
+```
+
+### **Orchestration Integration**
+Integration with security orchestration platforms:
+
+**SOAR Integration**:
+- **Playbook Automation**: Integration with automated response playbooks
+- **Decision Points**: AI-assisted decision making for automated workflows
+- **Escalation Procedures**: Intelligent escalation based on investigation findings
+- **Response Validation**: Automated validation of response effectiveness
+
+## Performance Metrics
+
+### **Response Time Optimization**
+Measurable improvements in incident response performance:
+
+**Key Metrics**:
+- **Mean Time to Detection (MTTD)**: Time from incident occurrence to detection
+- **Mean Time to Response (MTTR)**: Time from detection to initial response
+- **Mean Time to Containment (MTTC)**: Time from detection to threat containment
+- **Mean Time to Recovery (MTT R)**: Time from detection to full system recovery
+
+**Improvement Tracking**:
+- **Baseline Establishment**: Pre-Fleet AI performance baseline measurement
+- **Continuous Monitoring**: Ongoing monitoring of performance improvements
+- **Trend Analysis**: Analysis of performance trends and optimization opportunities
+- **ROI Calculation**: Return on investment analysis for Fleet AI deployment
+
+### **Quality Improvements**
+Enhanced investigation quality and thoroughness:
+
+**Quality Metrics**:
+- **Investigation Completeness**: Comprehensiveness of investigation coverage
+- **Accuracy Assessment**: Accuracy of threat identification and attribution
+- **False Positive Reduction**: Reduction in false positive incident alerts
+- **Threat Detection Enhancement**: Improvement in threat detection capabilities
+
+## Best Practices
+
+### **Incident Response Best Practices**
+Optimal utilization of Fleet AI for incident response:
+
+**Investigation Strategy**:
+- **Start Broad**: Begin with general assessment using Fleet Agent
+- **Progressively Focus**: Move to specialized agents based on findings
+- **Parallel Analysis**: Use multiple agents simultaneously for complex incidents
+- **Cross-Validation**: Validate findings across multiple data sources and agents
+
+**Documentation Practices**:
+- **Real-Time Documentation**: Document findings and decisions in real-time
+- **Evidence Linking**: Link all evidence to specific investigation findings
+- **Decision Rationale**: Document rationale for all major decisions
+- **Lessons Learned**: Capture lessons learned for future improvements
+
+### **Team Coordination**
+Effective coordination in multi-team environments:
+
+**Communication Guidelines**:
+- **Clear Roles**: Establish clear roles and responsibilities for each team member
+- **Regular Updates**: Provide regular updates on investigation progress
+- **Decision Authority**: Clearly define decision-making authority and escalation
+- **Knowledge Sharing**: Share findings and insights across team members
+
+**Workflow Optimization**:
+- **Standardized Procedures**: Establish standardized incident response procedures
+- **Tool Integration**: Integrate Fleet AI with existing incident response tools
+- **Training Programs**: Implement training programs for Fleet AI utilization
+- **Continuous Improvement**: Regular review and improvement of response procedures
+
+## Getting Help
+
+### **Incident Response Support**
+Access specialized support for incident response scenarios:
+
+**Emergency Support**:
+- **24/7 Availability**: Round-the-clock support for critical incidents
+- **Expert Consultation**: Access to cybersecurity experts for complex scenarios
+- **Escalation Procedures**: Clear escalation procedures for critical situations
+- **Remote Assistance**: Remote assistance and guidance during active incidents
+
+**Training and Preparation**:
+- **Incident Response Training**: Training programs for effective Fleet AI utilization
+- **Tabletop Exercises**: Simulated incident response exercises with Fleet AI
+- **Playbook Development**: Development of custom incident response playbooks
+- **Best Practice Sharing**: Sharing of industry best practices and lessons learned
+
+---
+
+**Ready to Transform Your Incident Response?** Fleet AI provides comprehensive support throughout the entire incident response lifecycle. Start by describing your incident scenario, and our specialized agents will provide expert guidance, analysis, and automation to accelerate your response while improving investigation quality and outcomes. 

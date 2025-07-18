@@ -1,0 +1,320 @@
+---
+title: "Detection Rules"
+description: "Automated generation of YARA, Sigma, and OSQuery detection rules for comprehensive cybersecurity threat detection"
+---
+
+# Detection Rules
+
+Binalyze Fleet AI excels at generating professional-grade detection rules across multiple cybersecurity domains. Our specialized agents create YARA rules for malware detection, Sigma rules for log analysis, and OSQuery queries for endpoint investigation, providing comprehensive threat detection coverage for your security infrastructure.
+
+## Overview
+
+Detection rules are the foundation of effective cybersecurity operations. Fleet AI transforms the traditionally time-intensive process of rule development into rapid, expert-driven generation that leverages deep cybersecurity knowledge and current threat intelligence.
+
+### **Multi-Format Support**
+Fleet AI generates detection rules in industry-standard formats:
+
+- **YARA Rules**: File-based malware detection and memory forensics
+- **Sigma Rules**: Log-based behavioral detection for SIEM platforms  
+- **OSQuery Queries**: Endpoint telemetry and system investigation
+- **Cross-Platform Compatibility**: Rules optimized for multiple security platforms
+
+### **Expert-Level Quality**
+All generated rules meet professional cybersecurity standards:
+
+- **Threat Intelligence Integration**: Incorporation of current threat intelligence
+- **False Positive Minimization**: Carefully crafted patterns to reduce false alerts
+- **Performance Optimization**: Rules balanced for accuracy and system performance
+- **Documentation**: Comprehensive explanations and deployment guidance
+
+## YARA Rule Generation
+
+### **Malware Detection Capabilities**
+Generate sophisticated YARA rules for comprehensive malware detection:
+
+**File-Based Detection**:
+- **PE Structure Analysis**: Windows executable characteristics and anomalies
+- **ELF Binary Analysis**: Linux executable patterns and signatures
+- **Document Malware**: Office documents, PDFs with embedded threats
+- **Script Detection**: PowerShell, JavaScript, VBScript, and other script threats
+- **Archive Analysis**: Compressed file contents and embedded malware
+
+**Memory-Based Detection**:
+- **Runtime Patterns**: Malware behavior visible only during execution
+- **Injection Techniques**: Code injection and process hollowing detection
+- **Cryptographic Constants**: Encryption keys and algorithm signatures
+- **Network Indicators**: Command and control communication patterns
+- **String Obfuscation**: Deobfuscated content and decoded strings
+
+### **Advanced YARA Features**
+Leverage sophisticated YARA capabilities:
+
+**Pattern Matching**:
+- **Hex Patterns**: Binary signatures and byte sequences
+- **String Patterns**: Text-based indicators and configuration data
+- **Regular Expressions**: Complex pattern matching with regex support
+- **Wildcard Patterns**: Flexible matching with wildcards and jumps
+- **Fuzzy Hashing**: Similarity-based detection for malware variants
+
+**Rule Optimization**:
+- **Performance Tuning**: Optimized patterns for efficient scanning
+- **Memory Usage**: Rules designed for minimal memory consumption
+- **Scanning Speed**: Fast execution for high-volume environments
+- **Accuracy Balance**: Optimal balance between detection and false positives
+
+### **Example YARA Rule Generation**
+```
+User Request: "Create a YARA rule to detect Cobalt Strike beacon payloads"
+
+Generated Rule Features:
+├── PE Structure Analysis
+│   ├── Section characteristics specific to Cobalt Strike
+│   ├── Import table patterns and API usage
+│   └── Resource section analysis and embedded data
+├── Configuration Detection
+│   ├── Encrypted configuration blob patterns
+│   ├── C2 server encoding mechanisms
+│   └── Sleep timer and jitter characteristics
+├── Behavioral Signatures
+│   ├── Named pipe communication patterns
+│   ├── Injection technique indicators
+│   └── Post-exploitation tool signatures
+└── Deployment Guidance
+    ├── Performance considerations for enterprise scanning
+    ├── Integration with existing YARA deployments
+    └── False positive mitigation strategies
+```
+
+## Sigma Rule Generation
+
+### **Log-Based Detection Capabilities**
+Create comprehensive Sigma rules for behavioral threat detection:
+
+**Platform Coverage**:
+- **Windows Security Events**: Authentication, process creation, registry modifications
+- **Linux/Unix Logs**: System calls, file access, authentication events
+- **Cloud Platform Logs**: AWS CloudTrail, Azure Activity, Google Cloud Audit
+- **Application Logs**: Web servers, databases, security tools
+- **Network Logs**: Firewall events, proxy logs, DNS queries
+
+**Attack Technique Detection**:
+- **Initial Access**: Phishing, exploit delivery, credential attacks
+- **Execution**: Malicious script execution, living-off-the-land techniques
+- **Persistence**: Registry modifications, scheduled tasks, service creation
+- **Privilege Escalation**: Token manipulation, exploit usage, credential dumping
+- **Defense Evasion**: Process injection, timestomping, log clearing
+- **Credential Access**: Password attacks, credential dumping, kerberoasting
+- **Discovery**: System enumeration, network scanning, service discovery
+- **Lateral Movement**: Remote access, credential reuse, administrative tools
+- **Collection**: Data staging, email collection, clipboard access
+- **Exfiltration**: Data transfer, covert channels, cloud storage abuse
+
+### **SIEM Platform Integration**
+Generate rules optimized for specific SIEM platforms:
+
+**Platform-Specific Optimization**:
+- **Splunk**: Native SPL query translation and field mapping
+- **Elastic Stack**: Elasticsearch query optimization and index utilization
+- **IBM QRadar**: AQL format and custom property integration
+- **Microsoft Sentinel**: KQL translation and Azure integration
+- **Sumo Logic**: Platform-specific query optimization
+- **Generic**: Standard Sigma format for universal compatibility
+
+### **Example Sigma Rule Generation**
+```
+User Request: "Detect lateral movement using WMI and administrative shares"
+
+Generated Rule Features:
+├── Multi-Event Correlation
+│   ├── WMI process creation events
+│   ├── Network authentication events
+│   └── File access on administrative shares
+├── Behavioral Analysis
+│   ├── Rapid succession of events across multiple hosts
+│   ├── Administrative credential usage patterns
+│   └── Unusual process parent-child relationships
+├── Platform Optimization
+│   ├── Windows Event Log field mapping
+│   ├── SIEM-specific query optimization
+│   └── Performance-tuned time windows
+└── Deployment Strategy
+    ├── Baseline establishment recommendations
+    ├── Threshold tuning guidance
+    └── False positive reduction techniques
+```
+
+## OSQuery Rule Generation
+
+### **Endpoint Investigation Capabilities**
+Generate comprehensive OSQuery queries for system analysis:
+
+**System Monitoring**:
+- **Process Analysis**: Running processes, command lines, parent relationships
+- **File System Events**: File modifications, access patterns, permission changes
+- **Network Connections**: Active connections, listening ports, process mapping
+- **Registry Monitoring**: Key modifications, value changes, persistence mechanisms
+- **Service Management**: Service creation, modification, startup configuration
+- **User Activity**: Login sessions, command history, privilege usage
+
+**Cross-Platform Support**:
+- **Windows Endpoints**: Registry, services, WMI, event logs
+- **macOS Systems**: LaunchAgents, kernel extensions, system integrity
+- **Linux Environments**: systemd services, cron jobs, kernel modules
+- **Container Security**: Docker containers, images, runtime analysis
+
+### **Investigation Workflows**
+Generate queries for comprehensive investigation scenarios:
+
+**Incident Response**:
+- **Evidence Collection**: Systematic gathering of forensic artifacts
+- **Timeline Reconstruction**: Temporal analysis of system events
+- **Impact Assessment**: Scope and extent of system compromise
+- **Containment Verification**: Validation of isolation and remediation
+
+**Threat Hunting**:
+- **Behavioral Analysis**: Anomalous activity detection and pattern recognition
+- **Persistence Hunting**: Hidden persistence mechanism discovery
+- **Living-off-the-Land**: Legitimate tool abuse detection
+- **Indicator Validation**: IOC verification and threat confirmation
+
+### **Example OSQuery Generation**
+```
+User Request: "Monitor for cryptocurrency mining software on endpoints"
+
+Generated Query Features:
+├── Process Detection
+│   ├── Mining software process identification
+│   ├── Command line argument analysis
+│   └── Resource usage pattern detection
+├── Network Analysis
+│   ├── Mining pool connection detection
+│   ├── Cryptocurrency protocol identification
+│   └── Suspicious outbound connections
+├── System Impact
+│   ├── CPU and GPU usage monitoring
+│   ├── System performance impact assessment
+│   └── Power consumption indicators
+└── Deployment Configuration
+    ├── Scheduled query frequency recommendations
+    ├── Resource usage optimization
+    └── Alert threshold configuration
+```
+
+## Rule Validation and Testing
+
+### **Quality Assurance Process**
+Ensure high-quality detection rules through comprehensive validation:
+
+**Accuracy Testing**:
+- **True Positive Validation**: Verification against known threats and indicators
+- **False Positive Testing**: Validation against benign activity and normal operations
+- **Performance Testing**: Resource usage and execution time analysis
+- **Platform Compatibility**: Testing across different platforms and versions
+
+**Expert Review**:
+- **Technical Validation**: Expert review of rule logic and effectiveness
+- **Threat Intelligence**: Cross-reference with current threat intelligence
+- **Best Practice Compliance**: Alignment with industry best practices
+- **Documentation Review**: Comprehensive documentation and explanation
+
+### **Testing Methodologies**
+Implement comprehensive testing before production deployment:
+
+**Laboratory Testing**:
+- **Controlled Environment**: Isolated testing environment for rule validation
+- **Known Samples**: Testing against verified malware and attack samples
+- **Benign Testing**: Validation against normal system activity
+- **Performance Baseline**: Measurement of rule performance impact
+
+**Pilot Deployment**:
+- **Limited Scope**: Initial deployment to subset of systems
+- **Monitoring**: Intensive monitoring of rule performance and accuracy
+- **Feedback Collection**: Gathering feedback from security analysts
+- **Iterative Improvement**: Refinement based on pilot results
+
+## Deployment and Management
+
+### **Implementation Strategy**
+Deploy detection rules effectively across your security infrastructure:
+
+**Phased Deployment**:
+1. **Test Environment**: Comprehensive testing in controlled environment
+2. **Pilot Deployment**: Limited production deployment for validation
+3. **Gradual Rollout**: Incremental expansion to full infrastructure
+4. **Performance Monitoring**: Continuous monitoring of rule effectiveness
+5. **Optimization**: Ongoing refinement based on operational feedback
+
+**Platform Integration**:
+- **SIEM Deployment**: Integration with security information and event management systems
+- **Endpoint Protection**: Deployment to endpoint detection and response platforms
+- **Network Security**: Integration with network security monitoring tools
+- **Cloud Security**: Deployment to cloud security monitoring platforms
+
+### **Lifecycle Management**
+Maintain and optimize detection rules over time:
+
+**Rule Maintenance**:
+- **Regular Updates**: Periodic refresh based on evolving threat landscape
+- **Performance Optimization**: Continuous tuning for optimal performance
+- **False Positive Reduction**: Ongoing refinement to minimize false alerts
+- **Threat Intelligence Integration**: Regular updates based on new threat intelligence
+
+**Documentation and Training**:
+- **Deployment Documentation**: Comprehensive guides for rule deployment
+- **Analyst Training**: Training security analysts on rule usage and interpretation
+- **Incident Response**: Integration with incident response procedures
+- **Knowledge Management**: Organizational knowledge base development
+
+## Advanced Rule Features
+
+### **Machine Learning Enhanced Rules**
+Leverage AI-driven enhancements for superior detection:
+
+**Pattern Discovery**:
+- **Anomaly Detection**: Statistical and behavioral anomaly identification
+- **Pattern Recognition**: AI-assisted identification of subtle threat patterns
+- **Variant Generation**: Rules robust against malware mutations and evasion
+- **Clustering Analysis**: Rules targeting related threat families and campaigns
+
+**Adaptive Rules**:
+- **Dynamic Thresholds**: Self-adjusting thresholds based on environmental baselines
+- **Context Awareness**: Rules that adapt to organizational context and patterns
+- **Learning Integration**: Continuous improvement based on detection outcomes
+- **Predictive Capabilities**: Early warning rules for emerging threats
+
+### **Integration Capabilities**
+Seamless integration with security ecosystem:
+
+**Threat Intelligence Feeds**:
+- **IOC Integration**: Automatic incorporation of indicators of compromise
+- **Campaign Attribution**: Rules linking detections to specific threat campaigns
+- **Real-Time Updates**: Dynamic rule updates based on threat intelligence feeds
+- **Community Sharing**: Contribution to and consumption of community threat intelligence
+
+**Orchestration and Response**:
+- **SOAR Integration**: Automated response workflows triggered by rule detections
+- **Incident Creation**: Automatic incident creation and categorization
+- **Escalation Procedures**: Intelligent alert routing and expert notification
+- **Forensic Collection**: Automated evidence collection triggered by detections
+
+## Getting Help with Detection Rules
+
+### **Rule Development Support**
+Access expert assistance for detection rule development:
+
+- **Custom Requirements**: Specialized rules for unique threat scenarios
+- **Performance Optimization**: Assistance with rule performance tuning
+- **Platform Integration**: Help with specific platform deployments
+- **Quality Assurance**: Expert review and validation of generated rules
+
+### **Strategic Guidance**
+Get strategic advice for detection rule programs:
+
+- **Program Development**: Strategic planning for detection rule programs
+- **Architecture Design**: Optimal architecture for rule deployment and management
+- **Team Training**: Training programs for security teams on rule development
+- **Best Practices**: Guidance on industry best practices and standards
+
+---
+
+**Ready to Generate Detection Rules?** Start by describing your threat detection requirements to any Fleet AI agent. Whether you need YARA rules for malware, Sigma rules for log analysis, or OSQuery queries for endpoints, our specialized agents will provide professional-grade detection rules tailored to your security infrastructure. 

@@ -1,0 +1,211 @@
+---
+title: "Fleet Agent"
+description: "Main conversational AI assistant for digital forensics and incident response guidance"
+---
+
+# Fleet Agent
+
+The Fleet Agent serves as your primary conversational AI assistant for digital forensics and incident response (DFIR) operations. Designed to provide expert-level guidance and analysis, the Fleet Agent acts as your knowledgeable cybersecurity companion, ready to assist with a wide range of security investigations and analysis tasks.
+
+## Overview
+
+The Fleet Agent is equipped with comprehensive DFIR knowledge and specialized tools to help cybersecurity professionals navigate complex investigations, understand threats, and make informed decisions during security incidents.
+
+### **Core Capabilities**
+- **General DFIR Guidance**: Expert advice on investigation methodologies and best practices
+- **Threat Analysis**: Detailed analysis of security threats and attack patterns
+- **Investigation Planning**: Strategic guidance for incident response workflows
+- **Context-Aware Assistance**: Maintains conversation history for continuous collaboration
+- **Tool Integration**: Access to reasoning, search, and file analysis tools
+
+## Key Features
+
+### **Expert Knowledge Base**
+The Fleet Agent draws from extensive cybersecurity knowledge including:
+- **Digital Forensics**: Evidence collection, preservation, and analysis techniques
+- **Incident Response**: Standardized response procedures and frameworks
+- **Threat Intelligence**: Current threat landscape and attack methodologies
+- **Malware Analysis**: Behavioral patterns and family identification
+- **Security Architecture**: Best practices for defensive security measures
+
+### **Interactive Capabilities**
+- **Real-time Streaming**: Immediate response generation for rapid assistance
+- **Conversation History**: Maintains context across extended investigations
+- **Multi-turn Dialogues**: Supports complex, evolving discussions
+- **Follow-up Questions**: Proactive clarification and deeper analysis
+
+### **Integrated Tools**
+
+#### **Reasoning Tools**
+- Logical analysis and inference capabilities
+- Step-by-step problem-solving guidance
+- Evidence correlation and timeline reconstruction
+
+#### **Google Search Tools**
+- Real-time threat intelligence gathering
+- CVE and vulnerability research
+- IOC reputation and attribution lookup
+- Security news and trend analysis
+
+#### **File Tools**
+- File metadata analysis and interpretation
+- Hash analysis and reputation checking
+- Structural analysis guidance for various file types
+- Evidence handling and preservation recommendations
+
+## Common Use Cases
+
+### **Incident Investigation Guidance**
+```
+"I have a potential data breach involving unusual network traffic. 
+Where should I start my investigation?"
+```
+
+**Fleet Agent Response**: Provides structured investigation approach including:
+- Initial containment recommendations
+- Evidence collection priorities
+- Network traffic analysis techniques
+- Timeline reconstruction methodology
+
+### **Threat Analysis Support**
+```
+"Can you help me understand this APT group's typical attack patterns?"
+```
+
+**Fleet Agent Response**: Delivers comprehensive threat profile including:
+- Known TTPs (Tactics, Techniques, Procedures)
+- Historical attack campaigns
+- Associated IOCs and signatures
+- Defensive recommendations
+
+### **Technical Guidance**
+```
+"What's the best approach for analyzing a potentially malicious PowerShell script?"
+```
+
+**Fleet Agent Response**: Provides step-by-step analysis methodology:
+- Safe analysis environment setup
+- Static analysis techniques
+- Dynamic analysis considerations
+- Documentation and reporting guidance
+
+## Integration with Specialized Agents
+
+### **Intelligent Routing**
+The Fleet Agent seamlessly coordinates with specialized agents when specific expertise is needed:
+
+- **@yara Mentions**: Routes to YARA Agent for malware detection rule generation
+- **@sigma Mentions**: Directs to Sigma Agent for log-based detection rules
+- **@osquery Mentions**: Connects to OSQuery Agent for endpoint telemetry
+- **Automatic Detection**: Recognizes when specialized agent expertise would be beneficial
+
+### **Workflow Coordination**
+- **Context Sharing**: Passes relevant conversation context to specialized agents
+- **Result Integration**: Incorporates specialist agent outputs into ongoing discussions
+- **Follow-up Guidance**: Provides implementation advice for specialist-generated content
+
+## Best Practices
+
+### **Effective Communication**
+- **Provide Context**: Include relevant background information about your investigation
+- **Be Specific**: Detail the type of incident, evidence, or analysis needed
+- **Ask Follow-ups**: Request clarification or additional analysis as needed
+- **Share Findings**: Update the agent with investigation progress for better assistance
+
+### **Investigation Workflow**
+1. **Initial Assessment**: Describe the security incident or concern
+2. **Guidance Request**: Ask for structured investigation approach
+3. **Iterative Analysis**: Discuss findings and receive ongoing guidance
+4. **Documentation**: Request help with reporting and documentation
+
+### **Leveraging Tools**
+- **Research Requests**: Ask for current threat intelligence or vulnerability information
+- **File Analysis**: Request guidance on analyzing suspicious files or artifacts
+- **Correlation**: Seek help connecting disparate pieces of evidence
+
+## Example Interactions
+
+### **Ransomware Investigation**
+```
+User: "We've detected ransomware on several endpoints. What's our priority response plan?"
+
+Fleet Agent: "For ransomware incidents, immediate priorities are:
+
+1. **Containment**:
+   - Isolate affected systems immediately
+   - Preserve network segments to prevent lateral spread
+   - Maintain one isolated system for analysis
+
+2. **Assessment**:
+   - Identify ransomware family using file signatures
+   - Determine encryption scope and timeline
+   - Check for data exfiltration indicators
+
+3. **Evidence Collection**:
+   - Memory dumps from affected systems
+   - Network traffic captures during incident window
+   - System logs and event timelines
+   - Registry and file system artifacts
+
+Would you like me to help you with any specific aspect of this investigation? I can also connect you with our specialized agents for detection rule generation if needed."
+```
+
+### **Suspicious Email Analysis**
+```
+User: "I need to analyze a phishing email. What should I examine?"
+
+Fleet Agent: "For phishing email analysis, focus on these key areas:
+
+**Email Headers**:
+- SPF, DKIM, and DMARC authentication results
+- Originating IP and routing path analysis
+- Timestamp correlation with reported incident
+
+**Message Content**:
+- URL analysis and redirection chains
+- Attachment file types and embedded objects
+- Social engineering techniques and urgency indicators
+
+**Technical Artifacts**:
+- Embedded tracking pixels or beacons
+- Hidden or obfuscated content
+- Metadata in attachments
+
+**Infrastructure Analysis**:
+- Domain registration and hosting information
+- SSL certificate analysis for linked sites
+- Related campaigns and threat attribution
+
+Would you like guidance on safely analyzing any attachments, or should I help you develop detection rules for similar emails?"
+```
+
+## Advanced Features
+
+### **Investigation Templates**
+Request structured approaches for common investigation types:
+- **Data Breach Response**: Comprehensive incident response workflows
+- **Malware Analysis**: Step-by-step malware investigation procedures
+- **Network Intrusion**: Network-focused investigation methodologies
+- **Insider Threat**: Personnel-related security investigation guidance
+
+### **Documentation Assistance**
+- **Report Generation**: Help structuring investigation reports and findings
+- **Timeline Creation**: Assistance with incident timeline reconstruction
+- **Evidence Cataloging**: Guidance on evidence documentation and chain of custody
+- **Executive Summaries**: Support for creating management-level incident reports
+
+## Getting Help
+
+### **In-Chat Commands**
+- `help` - Quick guidance on Fleet Agent capabilities
+- `examples` - Request example interactions for common scenarios
+- `tools` - Learn about available analysis tools and their capabilities
+
+### **Escalation Options**
+- **Specialized Agents**: Use @mentions to access expert agents
+- **Human Support**: Contact [support@binalyze.com](mailto:support@binalyze.com) for complex issues
+- **Training**: Request guidance on advanced DFIR techniques
+
+---
+
+**Ready to Start?** Begin your conversation with the Fleet Agent by describing your cybersecurity challenge or investigation need. The agent is designed to provide immediate, expert-level guidance tailored to your specific situation. 

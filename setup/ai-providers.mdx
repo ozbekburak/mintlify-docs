@@ -1,0 +1,410 @@
+---
+title: "AI Providers"
+description: "Configuration and management of AI providers for optimal cybersecurity operations"
+---
+
+# AI Providers Configuration
+
+Binalyze Fleet AI supports multiple AI providers to give you flexibility in choosing the optimal models for your cybersecurity operations. This comprehensive guide covers provider configuration, model selection, performance optimization, and cost management strategies.
+
+## Supported Providers Overview
+
+### **OpenAI**
+Industry leader with proven cybersecurity analysis capabilities:
+
+**Available Models**:
+- **GPT-4o**: Flagship model with advanced reasoning and multimodal capabilities
+- **GPT-4o-mini**: Balanced efficiency model optimized for performance and cost
+- **o3-mini**: Advanced reasoning model for complex analytical scenarios
+
+**Optimal Use Cases**:
+- Complex malware analysis and YARA rule generation
+- Sophisticated threat intelligence analysis
+- Multi-step incident response planning
+- Advanced code analysis and reverse engineering guidance
+
+**Performance Characteristics**:
+- **Response Time**: 2-8 seconds for typical cybersecurity queries
+- **Context Window**: 128K tokens for extensive investigation context
+- **Accuracy**: Excellent for technical cybersecurity analysis
+- **Cost**: Premium pricing with volume discounts available
+
+### **Anthropic**
+Safety-focused models with excellent analytical reasoning:
+
+**Available Models**:
+- **Claude-4 Sonnet**: Latest flagship with enhanced cybersecurity reasoning
+- **Claude-3.5 Sonnet**: Proven model for comprehensive security analysis
+- **Claude-3.5 Haiku**: Fast, efficient model for rapid security responses
+
+**Optimal Use Cases**:
+- Sigma rule development and log analysis
+- Compliance and regulatory analysis
+- Risk assessment and threat modeling
+- Security policy development and review
+
+**Performance Characteristics**:
+- **Response Time**: 1-5 seconds for standard security queries
+- **Context Window**: 200K tokens for comprehensive investigations
+- **Accuracy**: Exceptional for analytical and reasoning tasks
+- **Cost**: Competitive pricing with transparent usage tracking
+
+### **Google**
+Advanced models with strong multimodal and analytical capabilities:
+
+**Available Models**:
+- **Gemini-2.5 Flash**: High-performance model for complex analysis
+- **Gemini-2.0 Flash**: Efficient model for rapid security operations
+
+**Optimal Use Cases**:
+- OSQuery development and endpoint analysis
+- Multi-platform security investigations
+- Cloud security analysis and configuration review
+- Large-scale security data analysis
+
+**Performance Characteristics**:
+- **Response Time**: 1-4 seconds for typical operations
+- **Context Window**: 1M+ tokens for extensive data analysis
+- **Accuracy**: Strong performance on technical and analytical tasks
+- **Cost**: Competitive pricing with generous context limits
+
+### **Ollama**
+Local deployment for maximum security and privacy:
+
+**Available Models**:
+- **Llama 3.2**: Open-source model for local deployment
+- **Code Llama**: Specialized model for code analysis and generation
+- **Custom Models**: Organization-specific fine-tuned models
+
+**Optimal Use Cases**:
+- Classified environment deployment
+- High-volume operations with cost constraints
+- Custom model deployment for specialized domains
+- Air-gapped network security analysis
+
+**Performance Characteristics**:
+- **Response Time**: Varies based on local hardware (2-15 seconds)
+- **Context Window**: Model-dependent (typically 4K-128K tokens)
+- **Accuracy**: Dependent on model selection and fine-tuning
+- **Cost**: Infrastructure costs only, no per-query charges
+
+## Provider Configuration
+
+### **OpenAI Configuration**
+Set up OpenAI for cybersecurity operations:
+
+**API Key Management**:
+1. **Organization Setup**: Create or access OpenAI organization account
+2. **API Key Generation**: Generate API keys with appropriate permissions
+3. **Usage Limits**: Configure usage limits and budget alerts
+4. **Model Access**: Ensure access to required models (GPT-4o, GPT-4o-mini, o3-mini)
+5. **Security Settings**: Enable security features and access controls
+
+**Fleet AI Integration**:
+```bash
+# Configuration parameters for OpenAI
+Provider: OpenAI
+API Key: [Your OpenAI API Key]
+Organization: [Your OpenAI Organization ID]
+Model Selection:
+  - YARA Agent: GPT-4o
+  - Sigma Agent: GPT-4o-mini
+  - OSQuery Agent: GPT-4o-mini
+  - Fleet Agent: GPT-4o
+Rate Limits: Respect OpenAI tier limits
+Timeout: 30 seconds
+Retry Logic: 3 attempts with exponential backoff
+```
+
+### **Anthropic Configuration**
+Configure Anthropic for security analysis:
+
+**API Setup**:
+1. **Account Creation**: Set up Anthropic Console account
+2. **API Key Generation**: Create API keys for production use
+3. **Usage Monitoring**: Configure usage tracking and alerts
+4. **Model Selection**: Choose appropriate Claude models
+5. **Safety Settings**: Configure safety and content filtering
+
+**Integration Parameters**:
+```bash
+# Configuration for Anthropic Claude
+Provider: Anthropic
+API Key: [Your Anthropic API Key]
+Model Selection:
+  - YARA Agent: Claude-3.5 Sonnet
+  - Sigma Agent: Claude-4 Sonnet
+  - OSQuery Agent: Claude-3.5 Haiku
+  - Fleet Agent: Claude-4 Sonnet
+Max Tokens: 4096
+Temperature: 0.1 (for deterministic security analysis)
+Safety Level: Standard
+```
+
+### **Google Configuration**
+Set up Google AI for cybersecurity operations:
+
+**Google AI Studio Setup**:
+1. **Project Creation**: Create Google Cloud project
+2. **API Enablement**: Enable Vertex AI and Gemini API
+3. **Authentication**: Set up service account and credentials
+4. **Quota Management**: Configure API quotas and limits
+5. **Security Configuration**: Enable appropriate security controls
+
+**Configuration Details**:
+```bash
+# Google AI configuration
+Provider: Google
+API Key: [Your Google AI API Key]
+Project ID: [Your Google Cloud Project ID]
+Model Selection:
+  - YARA Agent: Gemini-2.5 Flash
+  - Sigma Agent: Gemini-2.5 Flash
+  - OSQuery Agent: Gemini-2.0 Flash
+  - Fleet Agent: Gemini-2.5 Flash
+Region: us-central1
+Safety Settings: Block medium and above harmful content
+```
+
+### **Ollama Configuration**
+Deploy local models for maximum security:
+
+**Local Deployment Setup**:
+1. **Infrastructure Planning**: Plan hardware requirements for model deployment
+2. **Ollama Installation**: Install Ollama on designated hardware
+3. **Model Download**: Download and configure required models
+4. **Network Configuration**: Set up secure network access
+5. **Monitoring Setup**: Implement performance and health monitoring
+
+**Configuration Example**:
+```bash
+# Ollama local deployment configuration
+Provider: Ollama
+Endpoint: https://ollama.internal.company.com
+Model Selection:
+  - YARA Agent: llama3.2:8b
+  - Sigma Agent: llama3.2:8b
+  - OSQuery Agent: codellama:7b
+  - Fleet Agent: llama3.2:13b
+Authentication: Bearer token
+SSL Verification: Enabled
+Timeout: 60 seconds
+```
+
+## Model Selection Strategy
+
+### **Agent-Specific Optimization**
+Choose optimal models for each specialized agent:
+
+**YARA Agent Model Selection**:
+- **Primary**: OpenAI GPT-4o (complex malware analysis)
+- **Alternative**: Anthropic Claude-4 Sonnet (behavioral analysis)
+- **Budget**: Google Gemini-2.0 Flash (cost-effective detection)
+- **Local**: Ollama Code Llama (air-gapped environments)
+
+**Sigma Agent Model Selection**:
+- **Primary**: Anthropic Claude-4 Sonnet (logical reasoning)
+- **Alternative**: OpenAI GPT-4o-mini (balanced performance)
+- **Platform-Specific**: Google Gemini-2.5 Flash (cloud platforms)
+- **High-Volume**: Ollama Llama 3.2 (large-scale operations)
+
+**OSQuery Agent Model Selection**:
+- **Primary**: Google Gemini-2.5 Flash (system analysis)
+- **Alternative**: OpenAI GPT-4o-mini (cross-platform queries)
+- **Efficiency**: Anthropic Claude-3.5 Haiku (rapid responses)
+- **Local**: Ollama Llama 3.2 (secure environments)
+
+**Fleet Agent Model Selection**:
+- **Primary**: OpenAI GPT-4o (comprehensive guidance)
+- **Alternative**: Anthropic Claude-4 Sonnet (analytical reasoning)
+- **Balanced**: Google Gemini-2.5 Flash (cost-performance balance)
+- **Secure**: Ollama Llama 3.2 (classified environments)
+
+### **Performance Considerations**
+Optimize model selection based on performance requirements:
+
+**Latency Optimization**:
+- **Real-Time Operations**: Claude-3.5 Haiku, Gemini-2.0 Flash
+- **Interactive Analysis**: GPT-4o-mini, Claude-3.5 Sonnet
+- **Batch Processing**: GPT-4o, Claude-4 Sonnet
+- **Background Analysis**: Any model with appropriate resource allocation
+
+**Accuracy Prioritization**:
+- **Critical Investigations**: GPT-4o, Claude-4 Sonnet
+- **Standard Operations**: GPT-4o-mini, Claude-3.5 Sonnet
+- **High-Volume Processing**: Gemini-2.5 Flash, Llama 3.2
+- **Specialized Domains**: Fine-tuned local models
+
+## Cost Optimization
+
+### **Provider Cost Analysis**
+Understanding cost structures for informed decision-making:
+
+**OpenAI Pricing Model**:
+- **GPT-4o**: $15/M input tokens, $60/M output tokens
+- **GPT-4o-mini**: $0.15/M input tokens, $0.60/M output tokens
+- **o3-mini**: $3/M input tokens, $12/M output tokens
+- **Volume Discounts**: Available for enterprise usage
+
+**Anthropic Pricing Model**:
+- **Claude-4 Sonnet**: $15/M input tokens, $75/M output tokens
+- **Claude-3.5 Sonnet**: $3/M input tokens, $15/M output tokens
+- **Claude-3.5 Haiku**: $0.25/M input tokens, $1.25/M output tokens
+- **Usage Credits**: Prepaid credit system with discounts
+
+**Google Pricing Model**:
+- **Gemini-2.5 Flash**: $1.25/M input tokens, $5/M output tokens
+- **Gemini-2.0 Flash**: $0.075/M input tokens, $0.30/M output tokens
+- **Context Caching**: Reduced costs for repeated context
+- **Regional Pricing**: Varies by deployment region
+
+**Ollama Cost Considerations**:
+- **Infrastructure Costs**: Hardware, electricity, maintenance
+- **No Per-Query Costs**: Flat infrastructure cost regardless of usage
+- **Scaling Costs**: Linear cost scaling with hardware requirements
+- **Operational Overhead**: IT management and support costs
+
+### **Cost Optimization Strategies**
+Implement strategies to optimize AI usage costs:
+
+**Model Tiering Strategy**:
+1. **Tier 1**: High-accuracy models for critical investigations
+2. **Tier 2**: Balanced models for standard operations
+3. **Tier 3**: Efficient models for high-volume, routine tasks
+4. **Tier 4**: Local models for cost-sensitive operations
+
+**Usage Optimization**:
+- **Context Management**: Optimize prompt length and context usage
+- **Caching Strategies**: Implement response caching for repeated queries
+- **Batch Processing**: Group similar queries for efficient processing
+- **Model Switching**: Use cheaper models for simpler tasks
+
+**Budget Management**:
+- **Usage Monitoring**: Real-time tracking of AI usage and costs
+- **Budget Alerts**: Automated alerts for budget thresholds
+- **Cost Attribution**: Track costs by team, project, or investigation
+- **Regular Reviews**: Monthly cost analysis and optimization reviews
+
+## Performance Monitoring
+
+### **Key Performance Metrics**
+Monitor essential metrics for optimal AI provider performance:
+
+**Response Time Metrics**:
+- **Average Response Time**: Mean response time across all queries
+- **95th Percentile Response Time**: Response time for 95% of queries
+- **Timeout Rate**: Percentage of queries exceeding timeout thresholds
+- **Provider Comparison**: Comparative response times across providers
+
+**Quality Metrics**:
+- **Accuracy Assessment**: Validation of AI response accuracy
+- **Completeness Evaluation**: Assessment of response comprehensiveness
+- **Relevance Scoring**: Measurement of response relevance to queries
+- **User Satisfaction**: Feedback-based quality assessment
+
+**Reliability Metrics**:
+- **Uptime Percentage**: Provider availability and service uptime
+- **Error Rate**: Frequency of API errors and failures
+- **Retry Success Rate**: Success rate of retry attempts
+- **Fallback Utilization**: Usage of fallback providers
+
+### **Monitoring Implementation**
+Implement comprehensive monitoring for AI provider performance:
+
+**Real-Time Monitoring**:
+- **Dashboard Creation**: Real-time dashboard for AI provider metrics
+- **Alert Configuration**: Automated alerts for performance degradation
+- **Trend Analysis**: Historical trend analysis and pattern recognition
+- **Comparative Analysis**: Side-by-side provider performance comparison
+
+**Performance Optimization**:
+- **Bottleneck Identification**: Identification of performance bottlenecks
+- **Capacity Planning**: Proactive planning for capacity requirements
+- **Load Balancing**: Optimal distribution of load across providers
+- **Configuration Tuning**: Fine-tuning of provider configurations
+
+## Troubleshooting Common Issues
+
+### **Connection and Authentication Issues**
+Resolve common provider connectivity problems:
+
+**API Key Problems**:
+- **Invalid Keys**: Verify API key validity and permissions
+- **Expired Keys**: Check for key expiration and renewal requirements
+- **Permission Issues**: Ensure adequate permissions for required operations
+- **Quota Limits**: Verify usage hasn't exceeded API quotas
+
+**Network Connectivity**:
+- **Firewall Rules**: Verify firewall rules allow AI provider access
+- **DNS Resolution**: Check DNS resolution for provider endpoints
+- **SSL/TLS Issues**: Verify SSL certificate validation and compatibility
+- **Proxy Configuration**: Configure proxy settings if required
+
+### **Performance Issues**
+Address performance-related challenges:
+
+**Slow Response Times**:
+- **Model Selection**: Consider faster models for time-sensitive operations
+- **Context Optimization**: Reduce context length to improve response times
+- **Regional Selection**: Choose geographically closer provider regions
+- **Load Distribution**: Distribute load across multiple providers
+
+**Quality Issues**:
+- **Model Upgrading**: Upgrade to higher-accuracy models for better results
+- **Prompt Optimization**: Refine prompts for improved response quality
+- **Temperature Tuning**: Adjust temperature settings for optimal outputs
+- **Context Enhancement**: Provide more detailed context for better analysis
+
+## Best Practices
+
+### **Security Best Practices**
+Implement security best practices for AI provider management:
+
+**Credential Management**:
+- **Secure Storage**: Store API keys using enterprise-grade encryption
+- **Access Controls**: Implement role-based access to AI provider credentials
+- **Regular Rotation**: Establish regular API key rotation procedures
+- **Audit Logging**: Log all API key usage and modifications
+
+**Data Protection**:
+- **Data Classification**: Classify data appropriately for AI processing
+- **Encryption**: Ensure data encryption in transit and at rest
+- **Data Residency**: Consider data residency requirements for compliance
+- **Privacy Controls**: Implement appropriate privacy controls and safeguards
+
+### **Operational Best Practices**
+Ensure optimal operational management of AI providers:
+
+**Configuration Management**:
+- **Version Control**: Maintain version control for provider configurations
+- **Environment Consistency**: Ensure consistency across development and production
+- **Change Management**: Implement change management for configuration updates
+- **Documentation**: Maintain comprehensive documentation of configurations
+
+**Performance Management**:
+- **Regular Testing**: Conduct regular performance testing and validation
+- **Capacity Planning**: Plan for capacity requirements and scaling needs
+- **Optimization Reviews**: Regular reviews and optimization of provider usage
+- **Continuous Improvement**: Implement continuous improvement processes
+
+## Getting Help
+
+### **Technical Support**
+Access technical support for AI provider configuration:
+
+- **Provider Documentation**: Comprehensive provider-specific documentation
+- **Integration Support**: Assistance with provider integration and configuration
+- **Troubleshooting**: Technical troubleshooting for provider issues
+- **Performance Optimization**: Guidance on optimizing provider performance
+
+### **Strategic Guidance**
+Get strategic advice for AI provider management:
+
+- **Provider Selection**: Expert guidance on optimal provider selection
+- **Cost Optimization**: Strategic cost optimization and budget management
+- **Architecture Planning**: Strategic planning for AI provider architecture
+- **Future Roadmap**: Guidance on future AI provider technology and trends
+
+---
+
+**Ready to Configure AI Providers?** Contact [support@binalyze.com](mailto:support@binalyze.com) for assistance with AI provider configuration and optimization. Our team can help you select the optimal providers and models for your specific cybersecurity requirements and operational constraints. 
